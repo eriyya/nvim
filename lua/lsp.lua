@@ -40,7 +40,7 @@ cmp.setup({
             mode = 'symbol',
             maxwidth = 50,
             ellipsis_char = '...',
-            before = function (entry, vim_item)
+            before = function(entry, vim_item)
                 -- vim_item.menu = entry:get_completion_item().detail
                 return vim_item
             end
