@@ -14,5 +14,6 @@ return {
         config = function()
             require('Comment').setup()
         end
-    }
+    },
+    { 'onsails/lspkind.nvim' }
 }
