@@ -18,7 +18,7 @@ vim.g.mapleader = ' '
 require('lazy').setup('plugins')
 
 -- Load modules
-require('general')
+require('options')
 require('keybinds')
 require('autocmd')
 require('colors')
