@@ -1,6 +1,6 @@
 return {
 	{ 'tpope/vim-surround' },
-	{ 'jiangmiao/auto-pairs' },
+	-- { 'jiangmiao/auto-pairs' },
 	{
 		'nvim-tree/nvim-tree.lua',
 		config = function()
