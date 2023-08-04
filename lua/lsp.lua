@@ -4,7 +4,12 @@ local servers = {
     'bashls',
     'lua_ls',
     'rust_analyzer',
-    'tsserver'
+    'tsserver',
+    'eslint',
+    'elixirls',
+    'clangd',
+    'omnisharp', -- C#
+    -- 'omnisharp_mono' -- C# mono runtime
 }
 
 require('mason-lspconfig').setup({
@@ -35,9 +40,10 @@ cmp.setup({
             mode = 'symbol',
             maxwidth = 50,
             ellipsis_char = '...',
-            -- before = function (entry, vim_item)
-            --     return vim_item
-            -- end
+            before = function (entry, vim_item)
+                -- vim_item.menu = entry:get_completion_item().detail
+                return vim_item
+            end
         })
     },
     mapping = cmp.mapping.preset.insert({
