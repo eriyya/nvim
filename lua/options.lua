@@ -14,3 +14,17 @@ vim.opt.smartindent = true
 -- UI Settings
 vim.g.number = true
 vim.opt.termguicolors = true
+
+vim.opt.ruler = false
+vim.opt.numberwidth = 2
+vim.opt.mouse = "a"
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.fillchars = { eob = " " }
+
+vim.opt.cursorline = true
+
+vim.opt.signcolumn = 'yes'
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.undofile = true

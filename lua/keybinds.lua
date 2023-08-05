@@ -1,17 +1,24 @@
+local telescope = require('telescope.builtin')
+
 -- Keybinds config
-local keybinds = {
+local mappings = {
     i = {
         { 'kj', '<ESC>' },
     },
     n = {
+        { ';', ':' },
         { 'H',          '^' },
         { 'L',          '$' },
         { '<C-h>',      ':nohlsearch<CR>' },
-        { '<leader>bd', ':bd<CR>' },
-        -- Yank to System Clipboard
-        { '<leader>y',  '"+y' },
+        { '<leader>bd', ':bd <bar> bp<CR>' },
+        { '<leader>y',  '"+y' }, -- Yank to System Clipboard
+
         { '<leader>w',  ':w<CR>' },
-        { '<leader>b',  ':NvimTreeToggle<CR>' }
+        { '<C-n>',      ':NvimTreeToggle<CR>' },
+        -- Telescope Mappings --
+        { '<C-p>',      telescope.find_files },
+        { '<C-b>',      telescope.buffers }
+
     },
     v = {
         { 'H',         '^' },
@@ -21,19 +28,8 @@ local keybinds = {
 }
 
 -- Set the keybinds from the table
-for mode, maps in pairs(keybinds) do
+for mode, maps in pairs(mappings) do
     for _, map in pairs(maps) do
         vim.keymap.set(mode, map[1], map[2], { noremap = true })
     end
 end
-
------------------------------
---  Telescope keybindings  --
------------------------------
-
-local telescope = require('telescope.builtin')
-
--- Ctrl + p to find files
-vim.keymap.set('n', '<C-p>', telescope.find_files, { noremap = true })
--- Ctrl + b to find buffers
-vim.keymap.set('n', '<C-b>', telescope.buffers, { noremap = true })

@@ -1,3 +1,7 @@
+require('catppuccin').setup({
+    no_italic = true,
+})
+
 vim.cmd.colorscheme 'catppuccin'
 
 if vim.g.neovide then
@@ -6,7 +10,6 @@ if vim.g.neovide then
     vim.g.neovide_theme = 'auto'
 end
 
-require('catppuccin').setup {
-    flavour = 'mocha',
-    no_italic = true,
-}
+require('nvim-web-devicons').setup({
+    default = true,
+})

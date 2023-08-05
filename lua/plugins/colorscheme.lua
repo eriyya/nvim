@@ -1,9 +1,20 @@
 return {
-    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        priority = 1000,
+    },
     {
         'xiyaowong/transparent.nvim',
-        config = function() require('transparent').setup({}) end
+        config = function()
+            require('transparent').setup({
+                extra_groups = {
+                    'NvimTreeNormal'
+                }
+            })
+        end
     },
+    { 'nvim-tree/nvim-web-devicons' },
     {
         'akinsho/bufferline.nvim',
         version = "*",
