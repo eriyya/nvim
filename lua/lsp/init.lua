@@ -14,7 +14,7 @@ local servers = {
     'taplo'
 }
 
-local server_config = require('lua/lsp/server_config').server_config
+local server_config = require('lsp.server_config').server_config
 
 require('mason-lspconfig').setup({
     ensure_installed = servers
