@@ -6,7 +6,7 @@ local mappings = {
         { 'kj', '<ESC>' },
     },
     n = {
-        { ';', ':' },
+        { ';',          ':' },
         { 'H',          '^' },
         { 'L',          '$' },
         { '<C-h>',      ':nohlsearch<CR>' },
@@ -17,8 +17,9 @@ local mappings = {
         { '<C-n>',      ':NvimTreeToggle<CR>' },
         -- Telescope Mappings --
         { '<C-p>',      telescope.find_files },
-        { '<C-b>',      telescope.buffers }
-
+        { '<C-b>',      telescope.buffers },
+        { '<M-j>',      ':move +1<CR>' },
+        { '<M-k>',      ':move -2<CR>' }
     },
     v = {
         { 'H',         '^' },
