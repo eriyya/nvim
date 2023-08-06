@@ -13,3 +13,11 @@ end
 require('nvim-web-devicons').setup({
     default = true,
 })
+
+require('lualine').setup({
+    options = {
+        theme = 'auto',
+        section_separators = '',
+        component_separators = '',
+    }
+})

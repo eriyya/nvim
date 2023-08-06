@@ -16,6 +16,7 @@ return {
             require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
     },
+    { 'nvim-lualine/lualine.nvim' },
     {
         'nvim-tree/nvim-tree.lua',
         config = function()

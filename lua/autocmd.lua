@@ -11,15 +11,15 @@ autocmd('TextYankPost', {
 })
 
 -- Absolute line numbers in insert mode and relative in normal mode
--- augroup('LineNumbers', { clear = true })
 autocmd('InsertEnter', { command = ':set nu nornu' })
 autocmd('InsertLeave', { command = ':set nu rnu' })
 
--- augroup('AutoFormat', {})
--- autocmd('BufWritePre', {
---  pattern = '*.(lua|js|jsx|ts|tsx|cs|rs)',
---  group = 'AutoFormat',
---  callback = function()
---      vim.lsp.buf.format({})
---  end
--- })
+-- Disable continue comment on new line
+autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove { "c", "r", "o" }
+  end,
+  group = general,
+  desc = "Disable New Line Comment",
+})
+

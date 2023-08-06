@@ -106,12 +106,12 @@ cmp.setup.cmdline({ '/', '?' }, {
     }
 })
 
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
+-- cmp.setup.cmdline(':', {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = {
+--         { name = 'buffer' }
+--     }
+-- })
 
 -- Setup language servers
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
