@@ -25,7 +25,8 @@ local mappings = {
         { 'L',         '$' },
         { '<leader>y', '"+y' },
         { '<A-j>',     ':move \'>+1<CR>gv=gv' },
-        { '<A-k>',     ':move \'<-2<CR>gv=gv' }
+        { '<A-k>',     ':move \'<-2<CR>gv=gv' },
+        { '<C-k>',     '<ESC>' }
     },
 }
 
