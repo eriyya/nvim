@@ -19,7 +19,8 @@ require('lazy').setup('plugins')
 
 -- Load modules
 require('options')
-require('keybinds')
-require('autocmd')
 require('colors')
 require('lsp')
+require('autocmd')
+require('keybinds')
+

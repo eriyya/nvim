@@ -1,7 +1,11 @@
-local telescope = require('telescope.builtin')
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
--- Keybinds config
-local mappings = {
+local telescope = require('telescope.builtin')
+local set_keymaps = require('util').set_keymaps
+
+-- Generic Keybinds
+set_keymaps({
     i = {
         { 'kj', '<ESC>' },
     },
@@ -17,6 +21,7 @@ local mappings = {
         -- Telescope Mappings --
         { '<C-p>',      telescope.find_files },
         { '<C-b>',      telescope.buffers },
+        ------------------------
         { '<A-j>',      ':move .+1<CR>==' },
         { '<A-k>',      ':move .-2<CR>==' }
     },
@@ -28,11 +33,50 @@ local mappings = {
         { '<A-k>',     ':move \'<-2<CR>gv=gv' },
         { '<C-k>',     '<ESC>' }
     },
-}
+})
 
--- Set the keybinds from the table
-for mode, maps in pairs(mappings) do
-    for _, map in pairs(maps) do
-        vim.keymap.set(mode, map[1], map[2], { noremap = true })
+-- LSP Keybinds
+autocmd('LspAttach', { -- Map keys after attaching to LSP
+    group = augroup('UserLspConfig', {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        local trouble = require('trouble')
+        local opts = { buffer = ev.buf }
+
+        -- Mappings
+        set_keymaps({
+            n = {
+                -- Trouble
+                { '<space>q',  function() trouble.open() end },
+                { '<space>xw', function() trouble.open("workspace_diagnostics") end },
+                { '<space>xd', function() trouble.open("document_diagnostics") end },
+                { '<space>xq', function() trouble.open("quickfix") end },
+                { '<space>xl', function() trouble.open("loclist") end },
+                { 'gr',        function() trouble.open("lsp_references") end },
+                -- LSP
+                -- { 'gr',        vim.lsp.buf.references,                              opts },
+                { 'gD',        vim.lsp.buf.declaration,                             opts },
+                { 'gD',        vim.lsp.buf.declaration,                             opts },
+                { '<space>f',  function() vim.lsp.buf.format({ async = true }) end, opts },
+                { 'K',         vim.lsp.buf.hover,                                   opts },
+                { 'gi',        vim.lsp.buf.implementation,                          opts },
+                { '<C-k>',     vim.lsp.buf.signature_help,                          opts },
+                { '<space>D',  vim.lsp.buf.type_definition,                         opts },
+                { '<space>wa', vim.lsp.buf.add_workspace_folder,                    opts },
+                { '<space>wr', vim.lsp.buf.remove_workspace_folder,                 opts },
+                { '<space>rn', vim.lsp.buf.rename,                                  opts },
+                { '<space>wl', function()
+                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end, opts },
+                -- Diagnostics
+                { '[d', vim.diagnostic.goto_prev },
+                { ']d', vim.diagnostic.goto_next },
+            },
+            nv = {
+                { '<space>a', ':CodeActionMenu<CR>', opts } -- LSP code actions
+            }
+        })
     end
-end
+})
