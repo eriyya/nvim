@@ -27,7 +27,7 @@ return {
     { 'saadparwaiz1/cmp_luasnip' },
     -- Code Action floating window
     { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
-    -- LSP Diagnistic
+    -- LSP Diagnostic
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
