@@ -20,6 +20,17 @@ return {
                     require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
                 end,
             },
+            {
+                'j-hui/fidget.nvim',
+                tag = 'legacy',
+                event = 'LspAttach',
+                config = function()
+                    require('fidget').setup({})
+                end
+            },
+
+            -- Additional lua configuration, makes nvim stuff amazing!
+            { 'folke/neodev.nvim', opts = {} },
         }
     },
     { 'hrsh7th/cmp-nvim-lsp' },

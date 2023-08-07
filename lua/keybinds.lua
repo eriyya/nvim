@@ -48,6 +48,8 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
         -- Mappings
         set_keymaps({
             n = {
+                -- Telescope
+                { '<C-s>',     ':Telescope lsp_document_symbols ignore_symbols=variable<CR>' },
                 -- Trouble
                 { '<space>q',  function() trouble.open() end },
                 { '<space>xw', function() trouble.open("workspace_diagnostics") end },
@@ -57,16 +59,16 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
                 { 'gr',        function() trouble.open("lsp_references") end },
                 -- LSP
                 -- { 'gr',        vim.lsp.buf.references,                              opts },
-                { 'gD',        vim.lsp.buf.declaration,                             opts },
-                { 'gD',        vim.lsp.buf.declaration,                             opts },
-                { '<space>f',  function() vim.lsp.buf.format({ async = true }) end, opts },
-                { 'K',         vim.lsp.buf.hover,                                   opts },
-                { 'gi',        vim.lsp.buf.implementation,                          opts },
-                { '<C-k>',     vim.lsp.buf.signature_help,                          opts },
-                { '<space>D',  vim.lsp.buf.type_definition,                         opts },
-                { '<space>wa', vim.lsp.buf.add_workspace_folder,                    opts },
-                { '<space>wr', vim.lsp.buf.remove_workspace_folder,                 opts },
-                { '<space>rn', vim.lsp.buf.rename,                                  opts },
+                { 'gD',        vim.lsp.buf.declaration,                                      opts },
+                { 'gD',        vim.lsp.buf.declaration,                                      opts },
+                { '<space>f',  function() vim.lsp.buf.format({ async = true }) end,          opts },
+                { 'K',         vim.lsp.buf.hover,                                            opts },
+                { 'gi',        vim.lsp.buf.implementation,                                   opts },
+                { '<C-k>',     vim.lsp.buf.signature_help,                                   opts },
+                { '<space>D',  vim.lsp.buf.type_definition,                                  opts },
+                { '<space>wa', vim.lsp.buf.add_workspace_folder,                             opts },
+                { '<space>wr', vim.lsp.buf.remove_workspace_folder,                          opts },
+                { '<space>rn', vim.lsp.buf.rename,                                           opts },
                 { '<space>wl', function()
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                 end, opts },
