@@ -25,6 +25,10 @@ M.server_config = {
                 },
             }
         }
+    },
+    omnisharp = {
+        enable_roslyn_analyzers = true,
+        enable_editor_config_support = true,
     }
 }
 
