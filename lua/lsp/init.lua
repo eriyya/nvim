@@ -6,12 +6,11 @@ local servers = {
     'rust_analyzer',
     'tsserver',
     'eslint',
-    'elixirls',
     'clangd',
-    'omnisharp', -- C#
-    -- 'omnisharp_mono', -- C# mono runtime
     'gopls',
-    'taplo'
+    'omnisharp_mono',
+    'taplo',
+    'jsonls',
 }
 
 local server_config = require('lsp.server_config').server_config

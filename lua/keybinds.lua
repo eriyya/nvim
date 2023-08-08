@@ -51,14 +51,15 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
                 -- Telescope
                 { '<C-s>',     ':Telescope lsp_document_symbols ignore_symbols=variable<CR>' },
                 -- Trouble
-                { '<space>q',  function() trouble.open() end },
+                { '<space>q', function() trouble.open("quickfix") end },
+                { '<space>xl', function() trouble.open("loclist") end },
                 { '<space>xw', function() trouble.open("workspace_diagnostics") end },
                 { '<space>xd', function() trouble.open("document_diagnostics") end },
-                { '<space>xq', function() trouble.open("quickfix") end },
-                { '<space>xl', function() trouble.open("loclist") end },
+                { '<space>xx',  function() trouble.open() end },
                 { 'gr',        function() trouble.open("lsp_references") end },
                 -- LSP
                 -- { 'gr',        vim.lsp.buf.references,                              opts },
+                { '<space>e',  vim.diagnostic.open_float },
                 { 'gD',        vim.lsp.buf.declaration,                                      opts },
                 { 'gD',        vim.lsp.buf.declaration,                                      opts },
                 { '<space>f',  function() vim.lsp.buf.format({ async = true }) end,          opts },

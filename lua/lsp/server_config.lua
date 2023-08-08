@@ -19,6 +19,9 @@ M.server_config = {
     lua_ls = {
         settings = {
             Lua = {
+                workspace = {
+                    checkThirdParty = false,
+                },
                 diagnostics = {
                     globals = { 'vim' },
                     disable = { 'lowercase-global' },
@@ -26,7 +29,7 @@ M.server_config = {
             }
         }
     },
-    omnisharp = {
+    omnisharp_mono = {
         enable_roslyn_analyzers = true,
         enable_editor_config_support = true,
     }
