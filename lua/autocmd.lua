@@ -16,10 +16,9 @@ autocmd('InsertLeave', { command = ':set nu rnu' })
 
 -- Disable continue comment on new line
 autocmd("BufEnter", {
-  callback = function()
-    vim.opt.formatoptions:remove { "c", "r", "o" }
-  end,
-  group = general,
-  desc = "Disable New Line Comment",
+    callback = function()
+        vim.opt.formatoptions:remove { "c", "r", "o" }
+    end,
+    group = general,
+    desc = "Disable New Line Comment",
 })
-

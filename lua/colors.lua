@@ -1,8 +1,28 @@
-require('catppuccin').setup({
-    no_italic = true,
-})
+local colorschemes = {
+    {
+        name = 'rose-pine',
+        settings = {
+            variant = 'main',
+            disable_italics = true,
+        }
+    },
+    {
+        name = 'catppuccin',
+        settings = {
+            no_italic = true,
+        }
+    }
+}
 
-vim.cmd.colorscheme 'catppuccin'
+for _, scheme in ipairs(colorschemes) do
+    local ok, theme = pcall(require, scheme.name)
+    if ok then
+        theme.setup(scheme.settings)
+        break
+    end
+end
+
+vim.cmd([[colorscheme rose-pine]])
 
 if vim.g.neovide then
     vim.g.neovide_transparency = 0.9

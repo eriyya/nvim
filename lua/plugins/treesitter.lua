@@ -14,6 +14,7 @@ return {
                 'bash',
                 'css',
                 'c',
+                'cpp',
                 'c_sharp',
                 'dockerfile',
                 'go',

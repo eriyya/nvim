@@ -2,6 +2,11 @@ return {
     {
         'catppuccin/nvim',
         name = 'catppuccin',
+        priority = 999,
+    },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
         priority = 1000,
     },
     {

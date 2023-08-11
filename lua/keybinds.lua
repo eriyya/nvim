@@ -18,6 +18,7 @@ set_keymaps({
         { '<leader>y',  '"+y' }, -- Yank to System Clipboard
         { '<leader>w',  ':w<CR>' },
         { '<C-n>',      ':NvimTreeToggle<CR>' },
+        { '<leader>gg', ':vimgrep ' },
         -- Telescope Mappings --
         { '<C-p>',      telescope.find_files },
         { '<C-b>',      telescope.buffers },
@@ -51,11 +52,11 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
                 -- Telescope
                 { '<C-s>',     ':Telescope lsp_document_symbols ignore_symbols=variable<CR>' },
                 -- Trouble
-                { '<space>q', function() trouble.open("quickfix") end },
+                { '<space>q',  function() trouble.open("quickfix") end },
                 { '<space>xl', function() trouble.open("loclist") end },
                 { '<space>xw', function() trouble.open("workspace_diagnostics") end },
                 { '<space>xd', function() trouble.open("document_diagnostics") end },
-                { '<space>xx',  function() trouble.open() end },
+                { '<space>xx', function() trouble.open() end },
                 { 'gr',        function() trouble.open("lsp_references") end },
                 -- LSP
                 -- { 'gr',        vim.lsp.buf.references,                              opts },
