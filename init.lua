@@ -23,4 +23,4 @@ require('options')
 require('keybinds')
 require('autocmd')
 require('lsp')
-
+require('commands')
