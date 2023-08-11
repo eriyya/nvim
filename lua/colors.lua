@@ -15,11 +15,7 @@ local colorschemes = {
 }
 
 for _, scheme in ipairs(colorschemes) do
-    local ok, theme = pcall(require, scheme.name)
-    if ok then
-        theme.setup(scheme.settings)
-        break
-    end
+    require(scheme.name).setup(scheme.settings)
 end
 
 vim.cmd([[colorscheme rose-pine]])
