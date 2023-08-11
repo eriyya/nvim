@@ -18,6 +18,7 @@ set_keymaps({
         { '<leader>y',  '"+y' }, -- Yank to System Clipboard
         { '<leader>w',  ':w<CR>' },
         { '<C-n>',      ':NvimTreeToggle<CR>' },
+        { '<A-n>',      ':NvimTreeFindFile<CR>' },
         { '<leader>gg', ':vimgrep ' },
         -- Telescope Mappings --
         { '<C-p>',      telescope.find_files },
