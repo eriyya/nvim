@@ -2,12 +2,14 @@ return {
     {
         'catppuccin/nvim',
         name = 'catppuccin',
-        priority = 999,
+        priority = 1000,
+        lazy = true,
     },
     {
         'rose-pine/neovim',
         name = 'rose-pine',
         priority = 1000,
+        lazy = true,
     },
     {
         'xiyaowong/transparent.nvim',
