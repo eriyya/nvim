@@ -18,7 +18,7 @@ for _, scheme in ipairs(colorschemes) do
     require(scheme.name).setup(scheme.settings)
 end
 
-vim.cmd([[colorscheme rose-pine]])
+vim.cmd('colorscheme ' .. vim.settings.theme)
 
 if vim.g.neovide then
     vim.g.neovide_transparency = 0.9
