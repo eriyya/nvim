@@ -46,6 +46,20 @@ M.setup = function()
     vim.settings = settings
 end
 
+M.list_themes = function()
+    local themes = {}
+
+    for _, path in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)) do
+        local theme = path:match('^.*/(.*)$')
+
+        if theme then
+            table.insert(themes, theme)
+        end
+    end
+
+    return themes
+end
+
 M.save = function()
     local json = vim.fn.json_encode(vim.settings)
     local write_ok = pcall(vim.fn.writefile, { json }, M.get_settings_path())
