@@ -51,3 +51,28 @@ vim.api.nvim_create_user_command('SetTheme', cmd_change_theme, {
     nargs = 1,
     complete = get_colors_list
 })
+
+
+local pickers = require("telescope.pickers")
+local sorters = require("telescope.sorters")
+local finders = require("telescope.finders")
+
+-- Custom picker to quickly switch between bookmarked directories (using naka)
+vim.api.nvim_create_user_command('Naka', function()
+    local actions = require('telescope.actions')
+    local action_state = require('telescope.actions.state')
+    local opts = require('telescope.themes').get_dropdown()
+    pickers.new({
+        results_title = 'Naka - Bookmarks',
+        finder = finders.new_oneshot_job({ "naka-cli", "-d" }, {}),
+        sorter = sorters.get_generic_fuzzy_sorter(),
+        attach_mappings = function(prompt_bufnr, _)
+            actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+                local selection = action_state.get_selected_entry()[1]
+                vim.cmd.cd(selection)
+            end)
+            return true
+        end
+    }, opts):find()
+end, {})
