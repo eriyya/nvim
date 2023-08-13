@@ -27,12 +27,14 @@ local exlude_fmt = {
     rust_analyzer = true,
 }
 
+---@diagnostic disable-next-line: missing-fields
 cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
         end
     },
+    ---@diagnostic disable-next-line: missing-fields
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol',
@@ -88,6 +90,7 @@ cmp.setup({
     }
 })
 
+---@diagnostic disable-next-line: missing-fields
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {

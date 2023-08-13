@@ -23,10 +23,24 @@ autocmd('InsertLeave', {
 })
 
 -- Disable continue comment on new line
-autocmd("BufEnter", {
+autocmd('BufEnter', {
     group = 'General',
     desc = "Disable New Line Comment",
     callback = function()
         vim.opt.formatoptions:remove { "c", "r", "o" }
+    end,
+})
+
+local ts_parsers = require('nvim-treesitter.parsers')
+
+-- Make sure treesitter is enabled
+autocmd('BufEnter', {
+    group = 'General',
+    pattern = '*.go,*.js,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua',
+    desc = "Enable Treesitter",
+    callback = function()
+        if ts_parsers.get_parser(0) == nil then
+            vim.cmd('TSUpdateSync')
+        end
     end,
 })

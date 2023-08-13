@@ -47,7 +47,6 @@ vim.api.nvim_create_user_command('SetTheme', cmd_change_theme, {
     complete = get_colors_list
 })
 
-
 local pickers = require("telescope.pickers")
 local sorters = require("telescope.sorters")
 local finders = require("telescope.finders")
