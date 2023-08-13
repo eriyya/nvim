@@ -18,11 +18,6 @@ end
 
 vim.api.nvim_create_user_command('WinFitContent', cmd_fit_content, {})
 
-local tree = require('nvim-tree.api')
-tree.events.subscribe(tree.events.Event.TreeOpen, function()
-    vim.cmd.WinFitContent()
-end)
-
 -- Change theme command
 
 local function cmd_change_theme(opts)
