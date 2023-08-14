@@ -62,7 +62,7 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
                 -- LSP
                 -- { 'gr',        vim.lsp.buf.references,                              opts },
                 { '<space>e',  vim.diagnostic.open_float },
-                { 'gD',        vim.lsp.buf.declaration,                                      opts },
+                { 'gd',        vim.lsp.buf.definition,                                       opts },
                 { 'gD',        vim.lsp.buf.declaration,                                      opts },
                 { '<space>f',  function() vim.lsp.buf.format({ async = true }) end,          opts },
                 { 'K',         vim.lsp.buf.hover,                                            opts },
