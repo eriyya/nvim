@@ -48,6 +48,9 @@ return {
                     load_textobjects = true
                 end,
             },
+            -- {
+            --     "nvim-treesitter/nvim-treesitter-context",
+            -- }
         },
         config = function(_, opts)
             if type(opts.ensure_installed) == "table" then
