@@ -1,4 +1,4 @@
 return {
-    -- { 'mhartington/formatter.nvim' }
-    { 'jose-elias-alvarez/null-ls.nvim' }
+  -- { 'mhartington/formatter.nvim' }
+  { 'jose-elias-alvarez/null-ls.nvim' },
 }
