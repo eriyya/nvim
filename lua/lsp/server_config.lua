@@ -35,4 +35,9 @@ M.server_config = {
   },
 }
 
+M.formatters = {
+  'stylua',
+  'prettierd',
+}
+
 return M

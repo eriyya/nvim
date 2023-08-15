@@ -20,12 +20,6 @@ require('mason-lspconfig').setup({
   automatic_installation = { exclude = { 'gopls' } },
 })
 
----@diagnostic disable-next-line: unused-local
-local formatters = {
-  'stylua',
-  'prettierd',
-}
-
 local null_ls = require('null-ls')
 
 null_ls.setup({
@@ -160,3 +154,4 @@ vim.diagnostic.config({
     source = 'always',
   },
 })
+

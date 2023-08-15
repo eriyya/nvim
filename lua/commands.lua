@@ -47,6 +47,13 @@ vim.api.nvim_create_user_command('SetTheme', cmd_change_theme, {
   complete = get_colors_list,
 })
 
+local function cmd_install_formatters()
+  local formatters = require('lsp.server_config').formatters
+  require('lsp.formatting').install_formatters(formatters)
+end
+
+vim.api.nvim_create_user_command('InstallFormatters', cmd_install_formatters, {})
+
 local pickers = require('telescope.pickers')
 local sorters = require('telescope.sorters')
 local finders = require('telescope.finders')
