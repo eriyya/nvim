@@ -9,7 +9,7 @@ return {
         enable = true,
         use_languagetree = true,
       },
-      indent = { enable = true },
+      indent = { enable = false },
       ensure_installed = {
         'go',
         'gomod',

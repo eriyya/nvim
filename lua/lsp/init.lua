@@ -13,8 +13,6 @@ local servers = {
   'jsonls',
 }
 
-local mason = require('mason-core.installer')
-
 local server_config = require('lsp.server_config').server_config
 
 require('mason-lspconfig').setup({
@@ -22,33 +20,12 @@ require('mason-lspconfig').setup({
   automatic_installation = { exclude = { 'gopls' } },
 })
 
+---@diagnostic disable-next-line: unused-local
 local formatters = {
   'golines',
   'stylua',
   'prettierd',
 }
-
----@diagnostic disable-next-line: unused-local, unused-function
-local function formatter_install()
-  local registry = require('mason-registry')
-  local installed = registry.get_installed_package_names()
-  local to_install = {}
-  for _, formatter in ipairs(formatters) do
-    if not vim.tbl_contains(installed, formatter) then
-      table.insert(to_install, formatter)
-    end
-  end
-
-  if #to_install > 0 then
-    local should_install = vim.fn.confirm(
-      'Formatters not installed: ' .. table.concat(to_install, ', ') .. '. Install?',
-      '&yes\n&no'
-    )
-    if should_install == 1 then
-      vim.cmd('MasonInstall ' .. table.concat(to_install, ' '))
-    end
-  end
-end
 
 local null_ls = require('null-ls')
 
@@ -56,17 +33,10 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.completion.spell,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.golines,
   },
 })
-
--- formatter_install()
---
--- require('formatter').setup({
---     lua = {
---         require('formatter.filetypes.lua').stylua
---     }
--- })
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')

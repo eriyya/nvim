@@ -71,4 +71,26 @@ function M.supports_format(client)
     or client.supports_method('textDocument/rangeFormatting')
 end
 
+function M.install_formatters(formatters)
+  local registry = require('mason-registry')
+  local installed = registry.get_installed_package_names()
+  local to_install = {}
+
+  for _, formatter in ipairs(formatters) do
+    if not vim.tbl_contains(installed, formatter) then
+      table.insert(to_install, formatter)
+    end
+  end
+
+  if #to_install > 0 then
+    local should_install = vim.fn.confirm(
+      'Formatters not installed: ' .. table.concat(to_install, ', ') .. '. Install?',
+      '&yes\n&no'
+    )
+    if should_install == 1 then
+      vim.cmd('MasonInstall ' .. table.concat(to_install, ' '))
+    end
+  end
+end
+
 return M
