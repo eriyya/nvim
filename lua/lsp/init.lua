@@ -40,7 +40,7 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 
 -- List of sources to exclude from special formatting
-local exlude_fmt = {
+local exclude_fmt = {
   rust_analyzer = true,
 }
 
@@ -60,7 +60,7 @@ cmp.setup({
       before = function(entry, vim_item) -- Customize completion result items
         pcall(function()
           local item = entry:get_completion_item()
-          if exlude_fmt[entry.source.source.client.name] == nil and item.detail then
+          if exclude_fmt[entry.source.source.client.name] == nil and item.detail then
             vim_item.menu = item.detail
           end
         end)
