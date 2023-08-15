@@ -13,11 +13,60 @@ local servers = {
     'jsonls',
 }
 
+local mason = require('mason-core.installer')
+
 local server_config = require('lsp.server_config').server_config
 
 require('mason-lspconfig').setup({
-    ensure_installed = servers
+    ensure_installed = servers,
+    automatic_installation = { exclude = { 'gopls' } },
 })
+
+local formatters = {
+    'golines',
+    'stylua',
+    'prettierd',
+}
+
+---@diagnostic disable-next-line: unused-local, unused-function
+local function formatter_install()
+    local registry = require('mason-registry')
+    local installed = registry.get_installed_package_names()
+    local to_install = {}
+    for _, formatter in ipairs(formatters) do
+        if not vim.tbl_contains(installed, formatter) then
+            table.insert(to_install, formatter)
+        end
+    end
+
+    if #to_install > 0 then
+        local should_install = vim.fn.confirm(
+            'Formatters not installed: ' .. table.concat(to_install, ', ') .. '. Install?',
+            '&yes\n&no'
+        )
+        if should_install == 1 then
+            vim.cmd('MasonInstall ' .. table.concat(to_install, ' '))
+        end
+    end
+end
+
+local null_ls = require('null-ls')
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.completion.spell,
+    },
+})
+
+-- formatter_install()
+--
+-- require('formatter').setup({
+--     lua = {
+--         require('formatter.filetypes.lua').stylua
+--     }
+-- })
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')
@@ -32,7 +81,7 @@ cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
-        end
+        end,
     },
     ---@diagnostic disable-next-line: missing-fields
     formatting = {
@@ -48,18 +97,18 @@ cmp.setup({
                     end
                 end)
                 return vim_item
-            end
-        })
+            end,
+        }),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         -- ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
+        ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        },
+        }),
         ['<C-k>'] = function()
             if cmp.visible() then
                 cmp.abort()
@@ -86,16 +135,16 @@ cmp.setup({
         { name = 'copilot',  group_index = 2 },
         { name = 'nvim_lsp', group_index = 2 },
         { name = 'path',     group_index = 2 },
-        { name = 'luasnip',  group_index = 2 }
-    }
+        { name = 'luasnip',  group_index = 2 },
+    },
 })
 
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = 'buffer' }
-    }
+        { name = 'buffer' },
+    },
 })
 
 -- cmp.setup.cmdline(':', {
@@ -106,19 +155,17 @@ cmp.setup.cmdline({ '/', '?' }, {
 -- })
 
 -- Setup language servers
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require('lspconfig')
+
 for _, lsp in ipairs(servers) do
     local conf = { capabilities = capabilities }
-    if server_config[lsp] then
-        conf = vim.tbl_deep_extend('keep', conf, server_config[lsp])
-    end
-    lspconfig[lsp].setup(conf)
+    local lsp_conf = vim.tbl_deep_extend('keep', conf, server_config[lsp] or {})
+    lspconfig[lsp].setup(lsp_conf)
 end
 
-
-local signs = { Info = "", Warn = "", Error = "", Hint = "" }
+local signs = { Info = '', Warn = '', Error = '', Hint = '' }
 local virtual_icons = {
     [vim.diagnostic.severity.INFO] = signs.Info,
     [vim.diagnostic.severity.WARN] = signs.Warn,
@@ -127,7 +174,7 @@ local virtual_icons = {
 }
 
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
+    local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
@@ -138,10 +185,10 @@ vim.diagnostic.config({
             local severity = diagnostic.severity
             local icon = virtual_icons[severity]
             return icon .. ' ' .. diagnostic.message
-        end
+        end,
     },
     severity_sort = true,
     float = {
-        source = "always"
-    }
+        source = 'always',
+    },
 })
