@@ -21,6 +21,7 @@ set_keymaps({
         { '<C-n>',      ':NvimTreeToggle<CR>' },
         { '<A-n>',      ':NvimTreeFindFile<CR>' },
         { '<leader>gg', ':vimgrep ' },
+        { '[c',         function() require("treesitter-context").go_to_context() end,  { silent = true } },
         -- Telescope Mappings --
         { '<C-p>',      telescope.find_files },
         { '<C-b>',      telescope.buffers },

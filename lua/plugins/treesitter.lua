@@ -48,9 +48,13 @@ return {
                     load_textobjects = true
                 end,
             },
-            -- {
-            --     "nvim-treesitter/nvim-treesitter-context",
-            -- }
+            {
+                "nvim-treesitter/nvim-treesitter-context",
+                opts = {
+                    max_lines = 1,
+                    trim_scope = 'inner',
+                }
+            }
         },
         config = function(_, opts)
             if type(opts.ensure_installed) == "table" then
