@@ -12,6 +12,10 @@ local colorschemes = {
       no_italic = true,
     },
   },
+  {
+    name = 'nightfox',
+    settings = {},
+  },
 }
 
 for _, scheme in ipairs(colorschemes) do

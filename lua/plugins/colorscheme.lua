@@ -12,6 +12,11 @@ return {
     lazy = true,
   },
   {
+    'EdenEast/nightfox.nvim',
+    priority = 1000,
+    lazy = true,
+  },
+  {
     'xiyaowong/transparent.nvim',
     config = function()
       require('transparent').setup({
