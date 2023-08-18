@@ -13,6 +13,7 @@ return {
   },
   {
     'EdenEast/nightfox.nvim',
+    name = 'nightfox',
     priority = 1000,
     lazy = true,
   },
@@ -40,6 +41,8 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('bufferline').setup({
+        highlights = {},
+        ---@diagnostic disable-next-line: missing-fields
         options = {
           diagnostics = 'nvim_lsp',
           indicator = {

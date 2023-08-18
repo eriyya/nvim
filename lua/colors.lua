@@ -19,7 +19,9 @@ local colorschemes = {
 }
 
 for _, scheme in ipairs(colorschemes) do
-  require(scheme.name).setup(scheme.settings)
+  if scheme.settings ~= nil then
+    require(scheme.name).setup(scheme.settings)
+  end
 end
 
 vim.cmd('colorscheme ' .. vim.settings.theme)
