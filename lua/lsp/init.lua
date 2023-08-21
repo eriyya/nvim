@@ -11,6 +11,8 @@ local servers = {
   'omnisharp_mono',
   'taplo',
   'jsonls',
+  'cssls',
+  'emmet_language_server',
 }
 
 local server_config = require('lsp.server_config').server_config
@@ -153,4 +155,3 @@ vim.diagnostic.config({
     source = 'always',
   },
 })
-
