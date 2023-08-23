@@ -1,4 +1,7 @@
 return {
+  {
+    'nvim-lua/plenary.nvim',
+  },
   { 'tpope/vim-surround' },
   -- { 'jiangmiao/auto-pairs' },
   -- { 'Raimondi/delimitMate' },
@@ -27,5 +30,11 @@ return {
         },
       })
     end,
+  },
+  {
+    'ThePrimeagen/harpoon',
+    opts = {
+      save_on_toggle = true,
+    },
   },
 }

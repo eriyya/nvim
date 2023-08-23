@@ -3,19 +3,27 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    lazy = true,
+    opts = {
+      no_italic = true,
+    },
   },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
     priority = 1000,
-    lazy = true,
+    opts = {
+      variant = 'main',
+      disable_italics = true,
+    },
   },
   {
     'EdenEast/nightfox.nvim',
     name = 'nightfox',
     priority = 1000,
-    lazy = true,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
   },
   {
     'xiyaowong/transparent.nvim',

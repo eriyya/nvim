@@ -19,33 +19,26 @@ end
 vim.api.nvim_create_user_command('WinFitContent', cmd_fit_content, {})
 
 -- Change theme command
+vim.api.nvim_create_user_command('Themes', function()
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+  require('telescope.builtin').colorscheme({
+    attach_mappings = function(prompt_bufnr, _)
+      actions.select_default:replace(function()
+        local selection = action_state.get_selected_entry()
+        if selection == nil then
+          return
+        end
 
-local function cmd_change_theme(opts)
-  local settings = require('settings')
-  local theme = opts.args
-  local theme_ok, _ = pcall(vim.cmd, 'colorscheme ' .. theme)
-
-  if theme_ok then
-    vim.settings.theme = theme
-    settings.save()
-  end
-end
-
-local function get_colors_list()
-  local schemes = require('colors').colorschemes
-
-  local themes = {}
-  for _, scheme in ipairs(schemes) do
-    table.insert(themes, scheme.name)
-  end
-
-  return themes
-end
-
-vim.api.nvim_create_user_command('SetTheme', cmd_change_theme, {
-  nargs = 1,
-  complete = get_colors_list,
-})
+        actions.close(prompt_bufnr)
+        vim.cmd('colorscheme ' .. selection.value)
+        vim.settings.theme = selection.value
+        require('settings').save()
+      end)
+      return true
+    end,
+  })
+end, {})
 
 local function cmd_install_formatters()
   local formatters = require('lsp.server_config').formatters
@@ -66,7 +59,7 @@ vim.api.nvim_create_user_command('Naka', function()
   pickers
     .new({
       results_title = 'Naka - Bookmarks',
-      finder = finders.new_oneshot_job({ 'naka-cli', '-d' }, {}),
+      finder = finders.new_oneshot_job({ 'naka-bin', '-d' }, {}),
       sorter = sorters.get_generic_fuzzy_sorter(),
       attach_mappings = function(prompt_bufnr, _)
         actions.select_default:replace(function()

@@ -1,7 +1,7 @@
 local M = {}
 
 local DEFAULT_SETTINGS = {
-  theme = 'rose-pine',
+  theme = 'nightfox',
 }
 
 local SETTINGS_FILE_NAME = 'settings.json'
@@ -15,7 +15,7 @@ M.setup = function()
   vim.settings = settings
 
   if vim.fn.filereadable(M.get_settings_path()) == 0 then
-    vim.notify('Settings file not found', vim.log.levels.ERROR)
+    vim.notify('No settings file found, creating one...', vim.log.levels.WARN)
 
     local json = vim.fn.json_encode(DEFAULT_SETTINGS)
     local write_ok = pcall(vim.fn.writefile, { json }, M.get_settings_path())

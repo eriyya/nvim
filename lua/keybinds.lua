@@ -10,8 +10,6 @@ set_keymaps({
     { 'kj', '<ESC>' },
   },
   n = {
-    -- { ';', ':' },
-    -- { ',', ';' },
     { 'H', '^' },
     { 'L', '$' },
     { '<C-h>', ':nohlsearch<CR>' },
@@ -21,13 +19,7 @@ set_keymaps({
     { '<C-n>', ':NvimTreeToggle<CR>' },
     { '<A-n>', ':NvimTreeFindFile<CR>' },
     { '<leader>gg', ':vimgrep ' },
-    {
-      '[c',
-      function()
-        require('treesitter-context').go_to_context()
-      end,
-      { silent = true },
-    },
+
     -- Telescope Mappings --
     { '<C-p>', telescope.find_files },
     { '<C-b>', telescope.buffers },
@@ -42,6 +34,48 @@ set_keymaps({
     { '<A-j>', ":move '>+1<CR>gv=gv" },
     { '<A-k>', ":move '<-2<CR>gv=gv" },
     { '<C-k>', '<ESC>' },
+  },
+})
+
+local harpoon_mark = require('harpoon.mark')
+local harpoon_ui = require('harpoon.ui')
+
+set_keymaps({
+  n = {
+    {
+      '[c',
+      function()
+        require('treesitter-context').go_to_context()
+      end,
+      { silent = true },
+    },
+    -- Harpoon --
+    { '<leader>m', harpoon_ui.toggle_quick_menu },
+    { '<C-m>', harpoon_mark.add_file },
+    {
+      '<leader>J',
+      function()
+        harpoon_ui.nav_file(1)
+      end,
+    },
+    {
+      '<leader>K',
+      function()
+        harpoon_ui.nav_file(2)
+      end,
+    },
+    {
+      '<leader>H',
+      function()
+        harpoon_ui.nav_file(3)
+      end,
+    },
+    {
+      '<leader>L',
+      function()
+        harpoon_ui.nav_file(4)
+      end,
+    },
   },
 })
 
@@ -61,9 +95,9 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
     end
 
     -- default format
-    local def_format = function()
-      vim.lsp.buf.format({ async = true })
-    end
+    -- local def_format = function()
+    --   vim.lsp.buf.format({ async = true })
+    -- end
 
     -- Mappings
     set_keymaps({
