@@ -27,10 +27,11 @@ return {
   },
   {
     'xiyaowong/transparent.nvim',
-    config = function()
-      vim.list_extend(vim.g.transparent_groups or {}, { 'NvimTreeNormal' })
-      require('transparent').setup()
-    end,
+    opts = {
+      extra_groups = {
+        'NvimTreeNormal',
+      },
+    },
   },
   {
     'nvim-tree/nvim-web-devicons',
