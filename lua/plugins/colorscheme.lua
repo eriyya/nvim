@@ -28,11 +28,8 @@ return {
   {
     'xiyaowong/transparent.nvim',
     config = function()
-      require('transparent').setup({
-        extra_groups = {
-          'NvimTreeNormal',
-        },
-      })
+      vim.list_extend(vim.g.transparent_groups or {}, { 'NvimTreeNormal' })
+      require('transparent').setup()
     end,
   },
   {

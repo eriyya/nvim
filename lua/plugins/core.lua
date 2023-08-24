@@ -37,4 +37,8 @@ return {
       save_on_toggle = true,
     },
   },
+  {
+    'iamcco/markdown-preview.nvim',
+    build = 'cd app && yarn install',
+  },
 }
