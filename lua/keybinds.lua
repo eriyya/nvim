@@ -65,13 +65,13 @@ set_keymaps({
       end,
     },
     {
-      '<leader>H',
+      '<leader>L',
       function()
         harpoon_ui.nav_file(3)
       end,
     },
     {
-      '<leader>L',
+      '<leader>H',
       function()
         harpoon_ui.nav_file(4)
       end,
