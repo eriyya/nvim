@@ -44,3 +44,18 @@ autocmd('BufEnter', {
     end
   end,
 })
+
+-- Special syntax highlighting for certain filetype
+
+augroup('SpecialFileType', { clear = true })
+
+autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = 'SpecialFileType',
+  pattern = '*.spark',
+  desc = 'Spark filetype',
+  callback = function()
+    vim.cmd('set filetype=spark')
+    require('Comment.ft').set('spark', '//%s')
+    vim.cmd('set syntax=spark')
+  end,
+})

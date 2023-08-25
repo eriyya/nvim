@@ -22,7 +22,7 @@ return {
     priority = 1000,
   },
   {
-    'rebelot/kanagawa.nvim',
+    'pineapplegiant/spaceduck',
     priority = 1000,
   },
   {
