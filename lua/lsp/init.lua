@@ -99,6 +99,15 @@ cmp.setup({
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'path', group_index = 2 },
     { name = 'luasnip', group_index = 2 },
+    {
+      name = 'spell',
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return true
+        end,
+      },
+    },
   },
 })
 

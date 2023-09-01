@@ -56,4 +56,5 @@ return {
     end,
   },
   { 'onsails/lspkind.nvim' },
+  { 'f3fora/cmp-spell' },
 }

@@ -28,3 +28,17 @@ vim.opt.signcolumn = 'yes'
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
+
+vim.g.markdown_fenced_languages = {
+  'html',
+  'css',
+  'javascript',
+  'typescript',
+  'bash=sh',
+  'json',
+  'lua',
+  'rust',
+  'csharp',
+  'c',
+  'cpp',
+}
