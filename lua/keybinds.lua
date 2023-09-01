@@ -94,11 +94,6 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
       format()
     end
 
-    -- default format
-    -- local def_format = function()
-    --   vim.lsp.buf.format({ async = true })
-    -- end
-
     -- Mappings
     set_keymaps({
       n = {

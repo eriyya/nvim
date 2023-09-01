@@ -41,21 +41,4 @@ return {
       })
     end,
   },
-  {
-    'akinsho/bufferline.nvim',
-    version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup({
-        highlights = {},
-        ---@diagnostic disable-next-line: missing-fields
-        options = {
-          diagnostics = 'nvim_lsp',
-          indicator = {
-            style = 'underline',
-          },
-        },
-      })
-    end,
-  },
 }
