@@ -37,8 +37,4 @@ vim.g.markdown_fenced_languages = {
   'bash=sh',
   'json',
   'lua',
-  'rust',
-  'csharp',
-  'c',
-  'cpp',
 }
