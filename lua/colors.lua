@@ -7,10 +7,6 @@ if vim.g.neovide then
   vim.g.neovide_theme = 'auto'
 end
 
-require('nvim-web-devicons').setup({
-  default = true,
-})
-
 require('lualine').setup({
   options = {
     theme = 'auto',

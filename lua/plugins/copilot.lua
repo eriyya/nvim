@@ -1,19 +1,5 @@
 return {
-  -- {
-  --     'github/copilot.vim',
-  --     config = function ()
-  --         vim.g.copilot_assume_mapped = true
-  --         vim.g.copilot_no_tab_map = true
-  --     end
-  -- },
-  -- {
-  --     'hrsh7th/cmp-copilot',
-  -- disable = not lvim.builtin.sell_soul_to_devel,
-  -- config = function ()
-  --     lvim.builtin.cmp.formatting.source_names['copilot'] = '(Cop)'
-  --     table.insert(lvim.builtin.cmp.sources, { name = 'copilot' })
-  -- end
-  -- }
+  -- Copilot integration written in lua
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
@@ -30,10 +16,4 @@ return {
       })
     end,
   },
-  -- {
-  --     "zbirenbaum/copilot-cmp",
-  --     config = function()
-  --         require("copilot_cmp").setup()
-  --     end
-  -- }
 }

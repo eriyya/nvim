@@ -1,4 +1,5 @@
 return {
+  -- Cool themes
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -25,6 +26,7 @@ return {
     'pineapplegiant/spaceduck',
     priority = 1000,
   },
+  -- Toggleable transparent background
   {
     'xiyaowong/transparent.nvim',
     opts = {
@@ -33,6 +35,7 @@ return {
       },
     },
   },
+  -- Additional icons
   {
     'nvim-tree/nvim-web-devicons',
     config = function()

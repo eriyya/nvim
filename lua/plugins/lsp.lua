@@ -1,25 +1,18 @@
 return {
+  -- Language server installer
   { 'williamboman/mason.nvim' },
+  -- LSP configuration for mason
   { 'williamboman/mason-lspconfig.nvim' },
+  -- LSP
   { 'neovim/nvim-lspconfig' },
+  -- Additional LSP support
+  { 'jose-elias-alvarez/null-ls.nvim' },
+  -- Completion engine
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      {
-        'windwp/nvim-autopairs',
-        opts = {
-          fast_wrap = {},
-          disable_filetype = { 'TelescopePrompt', 'vim' },
-        },
-        config = function(_, opts)
-          require('nvim-autopairs').setup(opts)
-
-          -- setup cmp for autopairs
-          local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-          require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
-        end,
-      },
+      -- LSP status indicators
       {
         'j-hui/fidget.nvim',
         tag = 'legacy',
@@ -37,8 +30,11 @@ return {
       { 'folke/neodev.nvim', opts = {} },
     },
   },
+  -- LSP completion source for cmp
   { 'hrsh7th/cmp-nvim-lsp' },
+  -- Snippets for lua
   { 'L3MON4D3/LuaSnip' },
+  -- Snippets source for cmp
   { 'saadparwaiz1/cmp_luasnip' },
   -- Code Action floating window
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
@@ -55,6 +51,8 @@ return {
       require('Comment').setup()
     end,
   },
+  -- Icons for LSP completion items
   { 'onsails/lspkind.nvim' },
+  -- Spell checking sources for cmp
   { 'f3fora/cmp-spell' },
 }
