@@ -5,11 +5,6 @@ local M = {}
 function M.format()
   local buf = vim.api.nvim_get_current_buf()
 
-  -- M.format(opts)
-  -- if vim.b.autoformat == false and not (opts and opts.force) then
-  --     return
-  -- end
-
   local formatters = M.get_formatters(buf)
   local client_ids = vim.tbl_map(function(client)
     return client.id
@@ -18,10 +13,6 @@ function M.format()
   if #client_ids == 0 then
     return
   end
-
-  -- if M.opts.format_notify then
-  --     M.notify(formatters)
-  -- end
 
   vim.lsp.buf.format(vim.tbl_deep_extend('force', {
     bufnr = buf,

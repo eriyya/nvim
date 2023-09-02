@@ -29,6 +29,10 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
 
+vim.o.signcolumn = 'yes'
+
+vim.o.completeopt = 'menuone,noselect'
+
 vim.g.markdown_fenced_languages = {
   'html',
   'css',
