@@ -16,6 +16,9 @@ M.server_config = {
       },
     },
   },
+  tsserver = {
+    single_file_support = true,
+  },
   lua_ls = {
     settings = {
       Lua = {
