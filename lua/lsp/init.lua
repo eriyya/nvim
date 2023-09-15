@@ -13,6 +13,7 @@ local servers = {
   'jsonls',
   'cssls',
   'emmet_language_server',
+  'powershell_es',
 }
 
 local server_config = require('lsp.server_config').server_config

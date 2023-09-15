@@ -19,7 +19,7 @@ set_keymaps({
     { '<C-n>', ':NvimTreeToggle<CR>' },
     { '<A-n>', ':NvimTreeFindFile<CR>' },
     { '<leader>gg', ':vimgrep ' },
-
+    { '<leader>ud', vim.cmd.UndotreeToggle },
     -- Telescope Mappings --
     { '<C-p>', telescope.find_files },
     { '<C-b>', telescope.buffers },
