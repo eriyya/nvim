@@ -7,6 +7,8 @@ return {
   { 'neovim/nvim-lspconfig' },
   -- Additional LSP support
   { 'jose-elias-alvarez/null-ls.nvim' },
+  -- Inlay Hints
+  -- { 'lvimuser/lsp-inlayhints.nvim', lazy = true },
   -- Completion engine
   {
     'hrsh7th/nvim-cmp',

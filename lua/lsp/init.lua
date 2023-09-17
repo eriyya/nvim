@@ -41,6 +41,8 @@ local exclude_fmt = {
   rust_analyzer = true,
 }
 
+require('lsp.inlay')
+
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
   snippet = {
@@ -169,6 +171,3 @@ vim.diagnostic.config({
 
 -- Snippets
 require('luasnip.loaders.from_snipmate').lazy_load({ paths = './snippets' })
-
--- Filetypes
-require('lsp.filetypes')

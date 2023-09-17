@@ -19,9 +19,21 @@ M.server_config = {
   tsserver = {
     single_file_support = true,
   },
+  ocamllsp = {
+    get_language_id = function(_, ftype)
+      return ftype
+    end,
+    inlay_hints = {
+      enable = true,
+      auto = true,
+    },
+  },
   lua_ls = {
     settings = {
       Lua = {
+        hint = {
+          enable = true,
+        },
         workspace = {
           checkThirdParty = false,
         },

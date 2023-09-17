@@ -12,6 +12,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- UI Settings
+vim.wo.number = true
 vim.opt.number = true
 vim.opt.termguicolors = true
 
