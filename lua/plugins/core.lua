@@ -11,6 +11,15 @@ return {
   { 'tpope/vim-fugitive' },
   -- Undo history visualizer
   { 'mbbill/undotree' },
+  -- Indent guides
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    opts = {
+      char = '┊',
+      show_trailing_blankline_indent = false,
+      show_current_context = true,
+    },
+  },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',

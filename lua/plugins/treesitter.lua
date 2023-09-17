@@ -35,6 +35,7 @@ return {
         'typescript',
         'yaml',
         'elixir',
+        'ocaml',
       },
     },
     dependencies = {

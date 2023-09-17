@@ -42,3 +42,4 @@ vim.g.markdown_fenced_languages = {
   'json',
   'lua',
 }
+

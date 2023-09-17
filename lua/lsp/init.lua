@@ -14,6 +14,7 @@ local servers = {
   'cssls',
   'emmet_language_server',
   'powershell_es',
+  'ocamllsp',
 }
 
 local server_config = require('lsp.server_config').server_config
@@ -165,3 +166,9 @@ vim.diagnostic.config({
     source = 'always',
   },
 })
+
+-- Snippets
+require('luasnip.loaders.from_snipmate').lazy_load({ paths = './snippets' })
+
+-- Filetypes
+require('lsp.filetypes')

@@ -51,7 +51,7 @@ augroup('SpecialFileType', { clear = true })
 
 autocmd({ 'BufRead', 'BufNewFile' }, {
   group = 'SpecialFileType',
-  pattern = '*.spark',
+  pattern = '*.spark,*.rpr',
   desc = 'Spark filetype',
   callback = function()
     vim.cmd('set filetype=spark')

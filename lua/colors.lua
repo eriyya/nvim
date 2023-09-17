@@ -1,6 +1,8 @@
 local theme = vim.settings.theme or 'nightfox'
 vim.cmd('colorscheme ' .. theme)
 
+vim.cmd([[highlight IndentBlanklineContextChar guifg=#61AFEF gui=nocombine]])
+
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.9
   vim.g.neovide_cursor_animation_length = 0
