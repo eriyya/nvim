@@ -39,4 +39,6 @@ return {
   {
     'nvim-tree/nvim-web-devicons',
   },
+  -- Extra color support for themes with missing lsp higlights
+  { 'folke/lsp-colors.nvim' },
 }

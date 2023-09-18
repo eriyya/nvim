@@ -23,9 +23,11 @@ M.server_config = {
     get_language_id = function(_, ftype)
       return ftype
     end,
-    inlay_hints = {
-      enable = true,
-      auto = true,
+    on_attach = require('virtualtypes').on_attach,
+    settings = {
+      codelens = {
+        enable = true,
+      },
     },
   },
   lua_ls = {
@@ -33,6 +35,7 @@ M.server_config = {
       Lua = {
         hint = {
           enable = true,
+          arrayIndex = 'Disable',
         },
         workspace = {
           checkThirdParty = false,

@@ -7,8 +7,8 @@ return {
   { 'neovim/nvim-lspconfig' },
   -- Additional LSP support
   { 'jose-elias-alvarez/null-ls.nvim' },
-  -- Inlay Hints
-  -- { 'lvimuser/lsp-inlayhints.nvim', lazy = true },
+  -- Virtual Types / Inlay hints (only used for some languages that don't natively support inlay hints yet)
+  { 'jubnzv/virtual-types.nvim' },
   -- Completion engine
   {
     'hrsh7th/nvim-cmp',
@@ -57,4 +57,6 @@ return {
   { 'onsails/lspkind.nvim' },
   -- Spell checking sources for cmp
   { 'f3fora/cmp-spell' },
+  -- OCaml runtime files
+  { 'ocaml/vim-ocaml' },
 }

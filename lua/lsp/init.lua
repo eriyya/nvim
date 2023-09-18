@@ -42,6 +42,7 @@ local exclude_fmt = {
 }
 
 require('lsp.inlay')
+require('lsp.codelens')
 
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
