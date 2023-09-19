@@ -26,6 +26,10 @@ return {
     'pineapplegiant/spaceduck',
     priority = 1000,
   },
+  {
+    'nyoom-engineering/oxocarbon.nvim',
+    priority = 1000,
+  },
   -- Toggleable transparent background
   {
     'xiyaowong/transparent.nvim',

@@ -1,8 +1,6 @@
 return {
   -- Utility functions for lua plugins
-  {
-    'nvim-lua/plenary.nvim',
-  },
+  { 'nvim-lua/plenary.nvim' },
   -- Easily change surrounding characters
   { 'tpope/vim-surround' },
   -- Auto detect tabstop and shiftwidth
@@ -15,7 +13,7 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     opts = {
-      char = '┊',
+      -- char = '┊',
       show_trailing_blankline_indent = false,
       show_current_context = true,
     },
@@ -53,6 +51,12 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.3',
+    priority = 100,
+  },
+  -- Fuzzy finder extension for telescope
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
   },
   -- Statusline
   { 'nvim-lualine/lualine.nvim' },
@@ -64,6 +68,39 @@ return {
         sync_root_with_cwd = true,
         view = {
           width = {},
+        },
+        renderer = {
+          highlight_git = true,
+          root_folder_modifier = ':t',
+          icons = {
+            glyphs = {
+              symlink = '',
+              bookmark = '◉',
+              git = {
+                unstaged = '',
+                staged = '',
+                unmerged = '',
+                renamed = '',
+                deleted = '',
+                untracked = '',
+                ignored = '',
+              },
+              folder = {
+                default = '',
+                open = '',
+                symlink = '',
+              },
+            },
+            show = {
+              git = false,
+              file = true,
+              folder = true,
+              folder_arrow = false,
+            },
+          },
+          indent_markers = {
+            enable = true,
+          },
         },
       })
     end,
