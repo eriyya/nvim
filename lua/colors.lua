@@ -1,5 +1,8 @@
 local theme = vim.settings.theme or 'nightfox'
-vim.cmd('colorscheme ' .. theme)
+
+if not pcall(vim.cmd.colorscheme, theme) then
+  vim.cmd.colorscheme('nightfox')
+end
 
 vim.cmd([[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]])
 vim.cmd([[highlight LspInlayHint guibg=none gui=nocombine]])
