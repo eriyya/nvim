@@ -28,7 +28,7 @@ for _, ls in ipairs(servers) do
 end
 
 require('mason-lspconfig').setup({
-  ensure_installed = servers,
+  ensure_installed = language_servers,
   automatic_installation = { exclude = { 'gopls' } },
 })
 
