@@ -29,7 +29,7 @@ end
 
 require('mason-lspconfig').setup({
   ensure_installed = language_servers,
-  automatic_installation = { exclude = { 'gopls' } },
+  automatic_installation = { exclude = vim.settings.excluded_lsp or {} },
 })
 
 local null_ls = require('null-ls')
