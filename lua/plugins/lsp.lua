@@ -32,6 +32,10 @@ return {
       { 'folke/neodev.nvim', opts = {} },
     },
   },
+  -- LSP enhancements
+  {
+    'nvimdev/lspsaga.nvim',
+  },
   -- LSP completion source for cmp
   { 'hrsh7th/cmp-nvim-lsp' },
   -- Snippets for lua

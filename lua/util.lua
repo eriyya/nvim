@@ -18,6 +18,14 @@ M.set_keymaps = function(mappings)
   end
 end
 
+M.table_contains = function(tbl, v)
+  for _, val in ipairs(tbl) do
+    if val == v then
+      return true
+    end
+  end
+end
+
 M.map = function(tbl, f)
   local t = {}
   for k, v in pairs(tbl) do

@@ -2,12 +2,13 @@ local M = {}
 
 local DEFAULT_SETTINGS = {
   theme = 'nightfox',
+  excluded_lsp = {},
 }
 
 local SETTINGS_FILE_NAME = 'settings.json'
 
 M.get_settings_path = function()
-  return vim.fn.stdpath('config') .. '\\' .. SETTINGS_FILE_NAME
+  return vim.fn.stdpath('config') .. '/' .. SETTINGS_FILE_NAME
 end
 
 M.setup = function()

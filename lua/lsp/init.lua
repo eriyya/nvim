@@ -17,7 +17,15 @@ local servers = {
   'ocamllsp',
 }
 
+local util = require('util')
 local server_config = require('lsp.server_config').server_config
+
+local language_servers = {}
+for _, ls in ipairs(servers) do
+  if not util.table_contains(vim.settings.excluded_lsp or {}, ls) then
+    table.insert(language_servers, ls)
+  end
+end
 
 require('mason-lspconfig').setup({
   ensure_installed = servers,
@@ -167,6 +175,15 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     source = 'always',
+  },
+})
+
+-- LSP Saga
+require('lspsaga').setup({
+  lightbulb = {
+    enabled = false,
+    sign = false,
+    virtual_text = false,
   },
 })
 
