@@ -18,6 +18,13 @@ return {
     },
   },
   {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
+    opts = {
+      transparent = true,
+    },
+  },
+  {
     'EdenEast/nightfox.nvim',
     name = 'nightfox',
     priority = 1000,

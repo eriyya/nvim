@@ -6,6 +6,7 @@ end
 
 vim.cmd([[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]])
 vim.cmd([[highlight LspInlayHint guibg=none gui=nocombine]])
+vim.cmd([[highlight TelescopeBorder guibg=none gui=nocombine]])
 
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.9
