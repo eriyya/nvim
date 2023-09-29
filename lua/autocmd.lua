@@ -55,7 +55,7 @@ autocmd({ 'BufRead', 'BufNewFile' }, {
   desc = 'Spark filetype',
   callback = function()
     vim.cmd('set filetype=spark')
-    require('Comment.ft').set('spark', '#%s')
+    require('Comment.ft').set('spark', '//%s')
     vim.cmd('set syntax=spark')
   end,
 })
