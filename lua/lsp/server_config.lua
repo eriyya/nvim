@@ -51,6 +51,15 @@ M.server_config = {
     enable_roslyn_analyzers = true,
     enable_editor_config_support = true,
   },
+  rust_analyzer = {
+    settings = {
+      ['rust-analyzer'] = {
+        check = {
+          command = 'clippy',
+        },
+      },
+    },
+  },
 }
 
 M.formatters = {
