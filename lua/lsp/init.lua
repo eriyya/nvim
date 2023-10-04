@@ -141,6 +141,13 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Setup language servers
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  },
+}
 
 local lspconfig = require('lspconfig')
 
@@ -184,6 +191,14 @@ require('lspsaga').setup({
     enabled = false,
     sign = false,
     virtual_text = false,
+  },
+  finder = {
+    -- layout = 'normal',
+    methods = {
+      tdr = 'textDocument/references',
+      tds = 'textDocument/definition',
+      tdi = 'textDocument/implementation',
+    },
   },
 })
 

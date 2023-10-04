@@ -12,11 +12,14 @@ return {
   -- Indent guides
   {
     'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      -- char = '┊',
-      show_trailing_blankline_indent = false,
-      show_current_context = true,
-    },
+    main = 'ibl',
+    config = function()
+      require('ibl').setup({
+        scope = {
+          enabled = false,
+        },
+      })
+    end,
   },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {

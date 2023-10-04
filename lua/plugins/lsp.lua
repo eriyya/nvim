@@ -43,7 +43,7 @@ return {
   -- Snippets source for cmp
   { 'saadparwaiz1/cmp_luasnip' },
   -- Code Action floating window
-  { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
+  -- { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
   -- LSP Diagnostic
   {
     'folke/trouble.nvim',

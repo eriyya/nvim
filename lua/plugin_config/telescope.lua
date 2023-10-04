@@ -8,4 +8,3 @@ telescope.setup({})
 
 -- Load telescope extensions
 telescope.load_extension('fzf')
-

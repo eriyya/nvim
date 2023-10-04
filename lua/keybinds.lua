@@ -23,7 +23,9 @@ set_keymaps({
     -- Telescope Mappings --
     { '<C-p>', telescope.find_files },
     { '<C-b>', telescope.buffers },
-    ------------------------
+    -- Trouble --
+    { '<leader>tl', ':TodoTrouble<CR>' },
+    { '<C-l>', ':TroubleToggle<CR>' },
     { '<A-j>', ':move .+1<CR>==' },
     { '<A-k>', ':move .-2<CR>==' },
   },
@@ -132,9 +134,10 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
         },
         {
           'gr',
-          function()
-            trouble.open('lsp_references')
-          end,
+          ':Lspsaga finder ref<CR>',
+          -- function()
+          -- trouble.open('lsp_references')
+          -- end,
         },
         -- LSP
         -- { 'gr', vim.lsp.buf.references, opts },
@@ -165,7 +168,7 @@ autocmd('LspAttach', { -- Map keys after attaching to LSP
         { ']d', vim.diagnostic.goto_next },
       },
       nv = {
-        { '<space>a', ':CodeActionMenu<CR>', opts }, -- LSP code actions
+        { '<space>a', ':Lspsaga code_action<CR>', opts }, -- LSP code actions
       },
     })
   end,
