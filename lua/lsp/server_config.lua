@@ -16,6 +16,25 @@ M.server_config = {
       },
     },
   },
+  tailwindcss = {
+    cmd = { 'tailwindcss-language-server', '--stdio' },
+    filetypes = {
+      'html',
+      'css',
+      'scss',
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+      'vue',
+    },
+    root_dir = util.root_pattern(
+      'tailwind.config.js',
+      'tailwind.config.ts',
+      'postcss.config.js',
+      'postcss.config.ts'
+    ),
+  },
   tsserver = {
     single_file_support = true,
   },

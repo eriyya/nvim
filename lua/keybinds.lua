@@ -18,10 +18,10 @@ set_keymaps({
     { '<leader>w', ':w<CR>' },
     { '<C-n>', ':NvimTreeToggle<CR>' },
     { '<A-n>', ':NvimTreeFindFile<CR>' },
-    { '<leader>gg', ':vimgrep ' },
+    { '<leader>rg', ':Telescope live_grep<CR>' },
     { '<leader>ud', vim.cmd.UndotreeToggle },
     -- Telescope Mappings --
-    { '<C-p>', telescope.find_files },
+    { '<C-p>', ':Telescope find_files<CR>' },
     { '<C-b>', telescope.buffers },
     -- Trouble --
     { '<leader>tl', ':TodoTrouble<CR>' },

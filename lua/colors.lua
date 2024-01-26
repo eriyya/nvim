@@ -21,3 +21,4 @@ require('lualine').setup({
     component_separators = '',
   },
 })
+

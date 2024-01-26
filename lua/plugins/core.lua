@@ -10,17 +10,17 @@ return {
   -- Undo history visualizer
   { 'mbbill/undotree' },
   -- Indent guides
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    config = function()
-      require('ibl').setup({
-        scope = {
-          enabled = false,
-        },
-      })
-    end,
-  },
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   main = 'ibl',
+  --   config = function()
+  --     require('ibl').setup({
+  --       scope = {
+  --         enabled = false,
+  --       },
+  --     })
+  --   end,
+  -- },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
