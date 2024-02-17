@@ -15,6 +15,7 @@ local servers = {
   'emmet_language_server',
   'powershell_es',
   'ocamllsp',
+  'pyright',
 }
 
 local util = require('util')

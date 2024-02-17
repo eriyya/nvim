@@ -19,7 +19,7 @@ require('lazy').setup('plugins')
 
 require('settings').setup()
 
-local x = require('plugin_config')
+require('plugin_config')
 
 -- Load modules
 require('colors')
