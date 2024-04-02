@@ -38,17 +38,17 @@ M.server_config = {
   tsserver = {
     single_file_support = true,
   },
-  ocamllsp = {
-    get_language_id = function(_, ftype)
-      return ftype
-    end,
-    on_attach = require('virtualtypes').on_attach,
-    settings = {
-      codelens = {
-        enable = true,
-      },
-    },
-  },
+  -- ocamllsp = {
+  --   get_language_id = function(_, ftype)
+  --     return ftype
+  --   end,
+  --   on_attach = require('virtualtypes').on_attach,
+  --   settings = {
+  --     codelens = {
+  --       enable = true,
+  --     },
+  --   },
+  -- },
   lua_ls = {
     settings = {
       Lua = {

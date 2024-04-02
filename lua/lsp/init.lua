@@ -1,7 +1,6 @@
 require('mason').setup()
 
 local servers = {
-  'bashls',
   'lua_ls',
   'rust_analyzer',
   'tsserver',
@@ -14,8 +13,6 @@ local servers = {
   'cssls',
   'emmet_language_server',
   'powershell_es',
-  'ocamllsp',
-  'pyright',
 }
 
 local util = require('util')
