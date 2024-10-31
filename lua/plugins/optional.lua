@@ -10,6 +10,6 @@ return {
     opts = {
       show_time = false,
       enable_line_number = false,
-    }
-  }
+    },
+  },
 }

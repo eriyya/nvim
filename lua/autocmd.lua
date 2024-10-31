@@ -27,7 +27,9 @@ autocmd('BufEnter', {
   group = 'General',
   desc = 'Disable New Line Comment',
   callback = function()
-    vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+    vim.opt.formatoptions:remove('c')
+    vim.opt.formatoptions:remove('r')
+    vim.opt.formatoptions:remove('o')
   end,
 })
 

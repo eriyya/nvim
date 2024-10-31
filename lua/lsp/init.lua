@@ -3,7 +3,7 @@ require('mason').setup()
 local servers = {
   'lua_ls',
   'rust_analyzer',
-  'tsserver',
+  'ts_ls',
   'eslint',
   'clangd',
   'gopls',
@@ -13,6 +13,7 @@ local servers = {
   'cssls',
   'emmet_language_server',
   'powershell_es',
+  'zls',
 }
 
 local util = require('util')
@@ -179,7 +180,7 @@ vim.diagnostic.config({
   },
   severity_sort = true,
   float = {
-    source = 'always',
+    source = true,
   },
 })
 
@@ -201,4 +202,4 @@ require('lspsaga').setup({
 })
 
 -- Snippets
-require('luasnip.loaders.from_snipmate').lazy_load({ paths = './snippets' })
+require('luasnip.loaders.from_snipmate').lazy_load({ paths = { './snippets' } })

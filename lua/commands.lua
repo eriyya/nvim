@@ -16,7 +16,7 @@ local function cmd_fit_content()
   vim.api.nvim_win_set_width(curr_win, max_line)
 end
 
-vim.api.nvim_create_user_command('WinFitContent', cmd_fit_content, {})
+vim.api.nvim_create_user_command('FitContent', cmd_fit_content, {})
 
 -- Change theme command
 vim.api.nvim_create_user_command('Themes', function()
@@ -47,28 +47,28 @@ end
 
 vim.api.nvim_create_user_command('InstallFormatters', cmd_install_formatters, {})
 
-local pickers = require('telescope.pickers')
-local sorters = require('telescope.sorters')
-local finders = require('telescope.finders')
+-- local pickers = require('telescope.pickers')
+-- local sorters = require('telescope.sorters')
+-- local finders = require('telescope.finders')
 
 -- Custom picker to quickly switch between bookmarked directories (using naka)
-vim.api.nvim_create_user_command('Naka', function()
-  local actions = require('telescope.actions')
-  local action_state = require('telescope.actions.state')
-  local opts = require('telescope.themes').get_dropdown()
-  pickers
-    .new({
-      results_title = 'Naka - Bookmarks',
-      finder = finders.new_oneshot_job({ 'naka-bin', '-d' }, {}),
-      sorter = sorters.get_generic_fuzzy_sorter(),
-      attach_mappings = function(prompt_bufnr, _)
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = action_state.get_selected_entry()[1]
-          vim.cmd.cd(selection)
-        end)
-        return true
-      end,
-    }, opts)
-    :find()
-end, {})
+-- vim.api.nvim_create_user_command('Naka', function()
+--   local actions = require('telescope.actions')
+--   local action_state = require('telescope.actions.state')
+--   local opts = require('telescope.themes').get_dropdown()
+--   pickers
+--     .new({
+--       results_title = 'Naka - Bookmarks',
+--       finder = finders.new_oneshot_job({ 'naka-bin', '-d' }, {}),
+--       sorter = sorters.get_generic_fuzzy_sorter(),
+--       attach_mappings = function(prompt_bufnr, _)
+--         actions.select_default:replace(function()
+--           actions.close(prompt_bufnr)
+--           local selection = action_state.get_selected_entry()[1]
+--           vim.cmd.cd(selection)
+--         end)
+--         return true
+--       end,
+--     }, opts)
+--     :find()
+-- end, {})
