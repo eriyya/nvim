@@ -37,6 +37,9 @@ set_keymaps({
     { '<A-k>', ":move '<-2<CR>gv=gv" },
     { '<C-k>', '<ESC>' },
   },
+  t = {
+    { '<ESC>', '<C-\\><C-n>' }, -- Easily leave term mode
+  }
 })
 
 local harpoon_mark = require('harpoon.mark')
@@ -53,7 +56,7 @@ set_keymaps({
     },
     -- Harpoon --
     { '<leader>m', harpoon_ui.toggle_quick_menu },
-    { '<C-m>', harpoon_mark.add_file },
+    { '<leader>h', harpoon_mark.add_file },
     {
       '<leader>J',
       function()
