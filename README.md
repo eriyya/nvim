@@ -16,6 +16,10 @@ _Example `settings.json` file_
 }
 ```
 
+### Commands
+- `:Themes` - Shows a list of available colorschemes, sets new colorscheme on selection
+- `:InstallFormatters` - Installs a list of pre-configured formatters (`lsp/formatting.lua`) 
+
 ## Terminal stuff
 
 ### Fonts
