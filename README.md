@@ -11,7 +11,8 @@ _Example `settings.json` file_
 ```json
 {
   "excluded_lsp": [],
-  "theme": "catppuccin-mocha"
+  "theme": "catppuccin-mocha",
+  "code_llm": false,
 }
 ```
 
