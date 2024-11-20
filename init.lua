@@ -15,6 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
 
+require('settings').setup()
+
 function get_disabled_plugins()
   local util = require('util')
   if util.IS_WINDOWS then
@@ -32,7 +34,6 @@ require('lazy').setup({
   },
 })
 
-require('settings').setup()
 
 require('plugin_config')
 
@@ -44,6 +45,3 @@ require('autocmd')
 require('lsp')
 require('commands')
 
-if vim.settings.code_llm then
-  require('ai')
-end
