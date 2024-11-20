@@ -3,6 +3,7 @@ local M = {}
 local DEFAULT_SETTINGS = {
   theme = 'nightfox',
   excluded_lsp = {},
+  code_llm = false,
 }
 
 local SETTINGS_FILE_NAME = 'settings.json'

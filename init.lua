@@ -43,3 +43,7 @@ require('keybinds')
 require('autocmd')
 require('lsp')
 require('commands')
+
+if vim.settings.code_llm then
+  require('ai')
+end
