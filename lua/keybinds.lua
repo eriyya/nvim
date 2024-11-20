@@ -122,25 +122,5 @@ autocmd('LspAttach', {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
       end, 'Toggle Inlay Hints')
     end
-
-    -- Clear highlights
-    if
-      client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
-    then
-      local hg = augroup('UserLspHighlight', { clear = true })
-      autocmd({ 'CursorHold', 'CursorHoldI' }, {
-        buffer = ev.buf,
-        group = hg,
-        callback = vim.lsp.buf.document_highlight,
-      })
-
-      autocmd('LspDetach', {
-        group = augroup('UserLspDetach', { clear = true }),
-        callback = function(ev2)
-          vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = 'UserLspHighlight', buffer = ev2.buf })
-        end,
-      })
-    end
   end,
 })
