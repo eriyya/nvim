@@ -18,8 +18,7 @@ vim.g.mapleader = ' '
 require('settings').setup()
 
 function get_disabled_plugins()
-  local util = require('util')
-  if util.IS_WINDOWS then
+  if require('util').IS_WINDOWS then
     return { 'man' }
   end
   return {}
@@ -34,14 +33,10 @@ require('lazy').setup({
   },
 })
 
-
-require('plugin_config')
-
 -- Load modules
 require('colors')
 require('options')
-require('keybinds')
 require('autocmd')
-require('lsp')
+require('keybinds')
 require('commands')
-
+require('lsp')

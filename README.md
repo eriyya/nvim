@@ -16,6 +16,13 @@ _Example `settings.json` file_
 }
 ```
 
+## Requirements
+
+Neovim 0.10.x  
+
+Install requirements with Chocolatey:  
+```choco install -y git ripgrep wget fd unzip gzip mingw make```
+
 ### Commands
 - `:Themes` - Shows a list of available colorschemes, sets new colorscheme on selection
 - `:InstallFormatters` - Installs a list of pre-configured formatters (`lsp/server_config.lua`:`M.formatters`) 

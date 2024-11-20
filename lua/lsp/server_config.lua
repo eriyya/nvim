@@ -52,6 +52,9 @@ M.server_config = {
   lua_ls = {
     settings = {
       Lua = {
+        completion = {
+          callSnippet = 'Replace',
+        },
         hint = {
           enable = true,
           arrayIndex = 'Disable',

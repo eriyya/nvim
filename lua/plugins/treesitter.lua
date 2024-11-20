@@ -33,6 +33,8 @@ return {
         'tsx',
         'typescript',
         'yaml',
+        'markdown',
+        'markdown_inline',
       },
     },
     dependencies = {

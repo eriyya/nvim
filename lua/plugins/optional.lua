@@ -12,4 +12,9 @@ return {
       enable_line_number = false,
     },
   },
+  -- Live preview markdown docs in the browser
+  {
+    'iamcco/markdown-preview.nvim',
+    build = 'cd app && yarn install',
+  },
 }

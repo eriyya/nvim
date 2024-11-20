@@ -56,13 +56,13 @@ local exclude_fmt = {
 
 require('lsp.codelens')
 
----@diagnostic disable-next-line: missing-fields
 cmp.setup({
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
   },
+  completion = { completeopt = 'menu,menuone,noinsert' },
   ---@diagnostic disable-next-line: missing-fields
   formatting = {
     format = lspkind.cmp_format({
@@ -112,6 +112,7 @@ cmp.setup({
     end, { 'i', 's' }),
   }),
   sources = {
+    { name = 'lazydev', group_index = 0 },
     { name = 'copilot', group_index = 2 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'path', group_index = 2 },
@@ -128,7 +129,6 @@ cmp.setup({
   },
 })
 
----@diagnostic disable-next-line: missing-fields
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
@@ -136,12 +136,16 @@ cmp.setup.cmdline({ '/', '?' }, {
   },
 })
 
--- cmp.setup.cmdline(':', {
---     mapping = cmp.mapping.preset.cmdline(),
---     sources = {
---         { name = 'buffer' }
---     }
--- })
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
+  }),
+  ---@diagnostic disable-next-line: missing-fields
+  matching = { disallow_symbol_nonprefix_matching = false },
+})
 
 -- Setup language servers
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
