@@ -29,6 +29,8 @@ Install requirements with Chocolatey:
 
 ## Terminal stuff
 
+Currently using [Wezterm](https://github.com/wez/wezterm)
+
 ### Fonts
 
 I mainly use these two fonts
