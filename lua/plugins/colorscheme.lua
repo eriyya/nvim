@@ -1,5 +1,4 @@
 return {
-  -- Cool themes
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -18,26 +17,6 @@ return {
       disable_background = true,
       disable_float_background = true,
     },
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    priority = 1000,
-    opts = {
-      transparent = true,
-    },
-  },
-  {
-    'EdenEast/nightfox.nvim',
-    name = 'nightfox',
-    priority = 1000,
-  },
-  {
-    'pineapplegiant/spaceduck',
-    priority = 1000,
-  },
-  {
-    'nyoom-engineering/oxocarbon.nvim',
-    priority = 1000,
   },
   -- Toggleable transparent background
   {

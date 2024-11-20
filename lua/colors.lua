@@ -1,7 +1,7 @@
-local theme = vim.settings.theme or 'nightfox'
+local theme = vim.settings.theme or 'catppuccin-mocha'
 
 if not pcall(vim.cmd.colorscheme, theme) then
-  vim.cmd.colorscheme('nightfox')
+  vim.cmd.colorscheme(theme)
 end
 
 vim.cmd([[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]])
@@ -21,4 +21,3 @@ require('lualine').setup({
     component_separators = '',
   },
 })
-
