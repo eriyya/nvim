@@ -86,4 +86,9 @@ M.formatters = {
   'prettierd',
 }
 
+-- Server specific options
+
+-- don't show parse errors in a separate window
+vim.g.zig_fmt_parse_errors = 0
+
 return M

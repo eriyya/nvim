@@ -43,6 +43,12 @@ null_ls.setup({
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
+lspkind.init({
+  symbol_map = {
+    Supermaven = '',
+  },
+})
+
 -- List of sources to exclude from special formatting
 local exclude_fmt = {
   rust_analyzer = true,

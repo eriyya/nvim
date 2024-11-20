@@ -15,13 +15,21 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
 
+function get_disabled_plugins()
+  local util = require('util')
+  if util.IS_WINDOWS then
+    return { 'man' }
+  end
+  return {}
+end
+
 require('lazy').setup({
   spec = { import = 'plugins' },
   performance = {
     rtp = {
-      disabled_plugins = { 'man' }
-    }
-  }
+      disabled_plugins = get_disabled_plugins(),
+    },
+  },
 })
 
 require('settings').setup()
