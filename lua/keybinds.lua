@@ -1,178 +1,146 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-
 local telescope = require('telescope.builtin')
-local set_keymaps = require('util').set_keymaps
+local telescope_themes = require('telescope.themes')
 
--- Generic Keybinds
-set_keymaps({
-  i = {
-    { 'kj', '<ESC>' },
-  },
-  n = {
-    { 'H', '^' },
-    { 'L', '$' },
-    { '<C-h>', ':nohlsearch<CR>' },
-    { '<leader>bd', ':bd <bar> bp<CR>' },
-    { '<leader>y', '"+y' }, -- Yank to System Clipboard
-    { '<leader>w', ':w<CR>' },
-    { '<C-n>', ':NvimTreeToggle<CR>' },
-    { '<A-n>', ':NvimTreeFindFile<CR>' },
-    { '<leader>rg', ':Telescope live_grep<CR>' },
-    { '<leader>ud', vim.cmd.UndotreeToggle },
-    -- Telescope Mappings --
-    { '<C-p>', ':Telescope find_files<CR>' },
-    { '<C-b>', telescope.buffers },
-    -- Trouble --
-    { '<leader>tl', ':TodoTrouble<CR>' },
-    { '<C-l>', ':TroubleToggle<CR>' },
-    { '<A-j>', ':move .+1<CR>==' },
-    { '<A-k>', ':move .-2<CR>==' },
-  },
-  v = {
-    { 'H', '^' },
-    { 'L', '$' },
-    { '<leader>y', '"+y' },
-    { '<A-j>', ":move '>+1<CR>gv=gv" },
-    { '<A-k>', ":move '<-2<CR>gv=gv" },
-    { '<C-k>', '<ESC>' },
-  },
-  t = {
-    { '<ESC>', '<C-\\><C-n>' }, -- Easily leave term mode
-  }
-})
+local key = function(mode, keys, func, desc, silent)
+  silent = silent or true
+  vim.keymap.set(mode, keys, func, { desc = desc, silent = silent })
+end
+
+--------------------------
+------ Insert Mode -------
+--------------------------
+
+key('i', 'kj', '<Esc>', 'Leave insert mode')
+key('i', 'jk', '<Esc>', 'Leave insert mode')
+
+-------------------------
+------ Normal Mode ------
+-------------------------
+
+key('n', 'H', '^', 'Goto start of line')
+key('n', 'L', '$', 'Goto end of line')
+key('n', '<C-h>', ':nohlsearch<CR>', 'Remove highlight')
+key('n', '<leader>y', '"+y', 'Yank to system clipboard')
+key('n', '<leader>w', ':w<CR>', 'Save file')
+key('n', '<leader>bd', ':bd <bar> bp<CR>', 'Delete active buffer')
+key('n', '<C-p>', telescope.find_files, 'Find files')
+key('n', '<C-b>', telescope.buffers, 'Find buffers')
+key('n', '<A-j>', ':move .+1<CR>==', 'Move current line down')
+key('n', '<A-k>', ':move .-2<CR>==', 'Move current line up')
+key('n', '<leader>tl', ':TodoTrouble<CR>', 'Show Trouble todo list')
+key('n', '<leader>ud', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
+
+-- NvimTree
+key('n', '<C-n>', ':NvimTreeToggle<CR>', 'Toggle NvimTree')
+key('n', '<C-n>', ':NvimTreeFindFile<CR>', 'Highlight current file in NvimTree')
+
+-- Fuzzy find files
+key('n', '<leader>/', function()
+  telescope.current_buffer_fuzzy_find(telescope_themes.get_dropdown({
+    previewer = false,
+  }))
+end, 'Fuzzy find in current buffer')
+
+-- Live Grep
+key('n', '<leader>rg', function()
+  telescope.live_grep({ prompt_title = 'Live Grep' })
+end, 'Live Grep')
+
+-- Treesitter Context
+key('n', '[c', function()
+  require('treesitter-context').go_to_context()
+end, 'Goto current treesitter context')
+
+--------------------------
+------ Visual Mode -------
+--------------------------
+
+key('v', 'H', '^', 'Goto start of line (VISUAL MODE)')
+key('v', 'L', '$', 'Goto end of line (VISUAL MODE)')
+key('v', '<leader>y', '"+y', 'Yank selection to system clipboard (VISUAL MODE)')
+key('v', '<A-j>', ":move '>+1<CR>gv=gv", 'Move selection down')
+key('v', '<A-k>', ":move '<-2<CR>gv=gv", 'Move selection up')
+key('v', '<C-k>', '<Esc>', 'Leave visual mode')
+
+--------------------------
+-------- Harpoon ---------
+--------------------------
 
 local harpoon_mark = require('harpoon.mark')
 local harpoon_ui = require('harpoon.ui')
 
-set_keymaps({
-  n = {
-    {
-      '[c',
-      function()
-        require('treesitter-context').go_to_context()
-      end,
-      { silent = true },
-    },
-    -- Harpoon --
-    { '<leader>m', harpoon_ui.toggle_quick_menu },
-    { '<leader>h', harpoon_mark.add_file },
-    {
-      '<leader>J',
-      function()
-        harpoon_ui.nav_file(1)
-      end,
-    },
-    {
-      '<leader>K',
-      function()
-        harpoon_ui.nav_file(2)
-      end,
-    },
-    {
-      '<leader>L',
-      function()
-        harpoon_ui.nav_file(3)
-      end,
-    },
-    {
-      '<leader>H',
-      function()
-        harpoon_ui.nav_file(4)
-      end,
-    },
-  },
-})
+key('n', '<leader>m', harpoon_ui.toggle_quick_menu, '[Harpoon]: Show mark menu')
+key('n', '<leader>h', harpoon_mark.add_file, '[Harpoon]: Add current file')
+key('n', '<leader>J', function()
+  harpoon_ui.nav_file(1)
+end, '[Harpoon]: Goto mark 1')
+key('n', '<leader>K', function()
+  harpoon_ui.nav_file(2)
+end, '[Harpoon]: Goto mark 2')
+key('n', '<leader>L', function()
+  harpoon_ui.nav_file(3)
+end, '[Harpoon]: Goto mark 3')
+key('n', '<leader>H', function()
+  harpoon_ui.nav_file(4)
+end, '[Harpoon]: Goto mark 4')
 
--- LSP Keybinds
-autocmd('LspAttach', { -- Map keys after attaching to LSP
-  group = augroup('UserLspConfig', {}),
+--------------------------
+---------- LSP -----------
+--------------------------
+
+autocmd('LspAttach', {
+  group = augroup('UserLspConfig', { clear = true }),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-    local trouble = require('trouble')
-    local opts = { buffer = ev.buf }
+    -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     local format = require('lsp.formatting').format
-    local run_format = function()
-      format()
+
+    local lsp_key = function(mode, keys, func, desc, silent)
+      silent = silent or true
+      vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = '[LSP]: ' .. desc })
     end
 
-    -- Mappings
-    set_keymaps({
-      n = {
-        -- Telescope
-        { '<C-s>', ':Telescope lsp_document_symbols ignore_symbols=variable<CR>' },
-        -- Trouble
-        {
-          '<space>q',
-          function()
-            trouble.open('quickfix')
-          end,
-        },
-        {
-          '<space>xl',
-          function()
-            trouble.open('loclist')
-          end,
-        },
-        {
-          '<space>xw',
-          function()
-            trouble.open('workspace_diagnostics')
-          end,
-        },
-        {
-          '<space>xd',
-          function()
-            trouble.open('document_diagnostics')
-          end,
-        },
-        {
-          '<space>xx',
-          function()
-            trouble.open()
-          end,
-        },
-        {
-          'gr',
-          ':Lspsaga finder ref<CR>',
-          -- function()
-          -- trouble.open('lsp_references')
-          -- end,
-        },
-        -- LSP
-        -- { 'gr', vim.lsp.buf.references, opts },
-        { '<space>e', vim.diagnostic.open_float },
-        { 'gd', vim.lsp.buf.definition, opts },
-        { 'gD', vim.lsp.buf.declaration, opts },
-        {
-          '<space>f',
-          run_format,
-          opts,
-        },
-        { 'K', vim.lsp.buf.hover, opts },
-        { 'gi', vim.lsp.buf.implementation, opts },
-        { '<C-k>', vim.lsp.buf.signature_help, opts },
-        { '<space>D', vim.lsp.buf.type_definition, opts },
-        { '<space>wa', vim.lsp.buf.add_workspace_folder, opts },
-        { '<space>wr', vim.lsp.buf.remove_workspace_folder, opts },
-        { '<space>rn', vim.lsp.buf.rename, opts },
-        {
-          '<space>wl',
-          function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          end,
-          opts,
-        },
-        -- Diagnostics
-        { '[d', vim.diagnostic.goto_prev },
-        { ']d', vim.diagnostic.goto_next },
-      },
-      nv = {
-        { '<space>a', ':Lspsaga code_action<CR>', opts }, -- LSP code actions
-      },
-    })
+    lsp_key('n', 'gd', telescope.lsp_definitions, 'Goto Definitions')
+    lsp_key('n', 'gr', ':Lspsaga finder ref<CR>', 'Find references')
+    lsp_key('n', 'gI', telescope.lsp_implementations, 'Goto Implementations')
+    lsp_key('n', '<leader>D', telescope.lsp_type_definitions, 'Goto Type Definitions')
+    lsp_key('n', '<C-s>', telescope.lsp_document_symbols, 'Document Symbols')
+    lsp_key('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+    lsp_key('n', '<leader>f', format, 'Format Document')
+    lsp_key('n', 'K', vim.lsp.buf.hover, 'Show hover docs')
+    lsp_key('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
+    lsp_key('n', '[d', vim.diagnostic.goto_prev, 'Goto previous diagnostic')
+    lsp_key('n', ']d', vim.diagnostic.goto_next, 'Goto next diagnostic')
+    lsp_key({ 'n', 'x' }, '<leader>a', ':Lspsaga code_action<CR>', 'Code Action')
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    -- Toggle inlay hints
+    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+      lsp_key('n', '<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
+      end, 'Toggle Inlay Hints')
+    end
+
+    -- Clear highlights
+    if
+      client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
+    then
+      local hg = augroup('UserLspHighlight', { clear = true })
+      autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        buffer = ev.buf,
+        group = hg,
+        callback = vim.lsp.buf.document_highlight,
+      })
+
+      autocmd('LspDetach', {
+        group = augroup('UserLspDetach', { clear = true }),
+        callback = function(ev2)
+          vim.lsp.buf.clear_references()
+          vim.api.nvim_clear_autocmds({ group = 'UserLspHighlight', buffer = ev2.buf })
+        end,
+      })
+    end
   end,
 })
