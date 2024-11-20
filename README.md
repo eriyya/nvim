@@ -24,6 +24,3 @@ I mainly use these two fonts
 [Iosevka](https://typeof.net/Iosevka/) (Term NerdFont)
 [Monaspace Neon](https://monaspace.githubnext.com/) (Patched with NerdFont)
 
-### Terminal theme
-
-[Spaceduck](https://github.com/pineapplegiant/spaceduck)
