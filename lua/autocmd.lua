@@ -38,7 +38,7 @@ local ts_parsers = require('nvim-treesitter.parsers')
 -- Make sure treesitter is enabled
 autocmd('BufEnter', {
   group = 'General',
-  pattern = '*.go,*.js,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua',
+  pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.zig,*.cpp,*.cs,*.lua',
   desc = 'Enable Treesitter',
   callback = function()
     if ts_parsers.get_parser(0) == nil then
@@ -47,17 +47,3 @@ autocmd('BufEnter', {
   end,
 })
 
--- Special syntax highlighting for certain filetype
-
-augroup('SpecialFileType', { clear = true })
-
-autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = 'SpecialFileType',
-  pattern = '*.spark,*.rpr',
-  desc = 'Spark filetype',
-  callback = function()
-    vim.cmd('set filetype=spark')
-    require('Comment.ft').set('spark', '//%s')
-    vim.cmd('set syntax=spark')
-  end,
-})

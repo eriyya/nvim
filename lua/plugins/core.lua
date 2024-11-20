@@ -72,50 +72,50 @@ return {
   -- Statusline
   { 'nvim-lualine/lualine.nvim' },
   -- File explorer
-  {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require('nvim-tree').setup({
-        sync_root_with_cwd = true,
-        view = {
-          width = {},
-        },
-        renderer = {
-          highlight_git = true,
-          root_folder_modifier = ':t',
-          icons = {
-            glyphs = {
-              symlink = '',
-              bookmark = '◉',
-              git = {
-                unstaged = '',
-                staged = '',
-                unmerged = '',
-                renamed = '',
-                deleted = '',
-                untracked = '',
-                ignored = '',
-              },
-              folder = {
-                default = '',
-                open = '',
-                symlink = '',
-              },
-            },
-            show = {
-              git = false,
-              file = true,
-              folder = true,
-              folder_arrow = false,
-            },
-          },
-          indent_markers = {
-            enable = true,
-          },
-        },
-      })
-    end,
-  },
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   config = function()
+  --     require('nvim-tree').setup({
+  --       sync_root_with_cwd = true,
+  --       view = {
+  --         width = {},
+  --       },
+  --       renderer = {
+  --         highlight_git = true,
+  --         root_folder_modifier = ':t',
+  --         icons = {
+  --           glyphs = {
+  --             symlink = '',
+  --             bookmark = '◉',
+  --             git = {
+  --               unstaged = '',
+  --               staged = '',
+  --               unmerged = '',
+  --               renamed = '',
+  --               deleted = '',
+  --               untracked = '',
+  --               ignored = '',
+  --             },
+  --             folder = {
+  --               default = '',
+  --               open = '',
+  --               symlink = '',
+  --             },
+  --           },
+  --           show = {
+  --             git = false,
+  --             file = true,
+  --             folder = true,
+  --             folder_arrow = false,
+  --           },
+  --         },
+  --         indent_markers = {
+  --           enable = true,
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   -- Quickly navigate between primary files
   {
     'ThePrimeagen/harpoon',

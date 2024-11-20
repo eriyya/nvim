@@ -32,9 +32,7 @@ key('n', '<A-k>', ':move .-2<CR>==', 'Move current line up')
 key('n', '<leader>tl', ':TodoTrouble<CR>', 'Show Trouble todo list')
 key('n', '<leader>ud', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
 
--- NvimTree
-key('n', '<C-n>', ':NvimTreeToggle<CR>', 'Toggle NvimTree')
-key('n', '<C-n>', ':NvimTreeFindFile<CR>', 'Highlight current file in NvimTree')
+-- NeoTree open <C-n> (in file-tree.lua)
 
 -- Fuzzy find files
 key('n', '<leader>/', function()
