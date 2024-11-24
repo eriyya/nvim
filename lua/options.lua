@@ -21,6 +21,8 @@ vim.opt.fillchars = { eob = ' ' }
 vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
+vim.opt.showmode = false -- hide mode since it's shown in the statusbar
+
 
 vim.opt.signcolumn = 'yes'
 vim.opt.splitbelow = true
@@ -28,7 +30,6 @@ vim.opt.splitright = true
 vim.opt.undofile = true
 
 vim.o.signcolumn = 'yes'
-
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.scrolloff = 10

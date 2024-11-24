@@ -108,7 +108,7 @@ autocmd('LspAttach', {
     lsp_key('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
     lsp_key('n', '<leader>f', format, 'Format Document')
     lsp_key('n', 'K', vim.lsp.buf.hover, 'Show hover docs')
-    lsp_key('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
+    lsp_key('n', '<leader>rn', ':Lspsaga rename<CR>', 'Rename')
     lsp_key('n', '[d', vim.diagnostic.goto_prev, 'Goto previous diagnostic')
     lsp_key('n', ']d', vim.diagnostic.goto_next, 'Goto next diagnostic')
     lsp_key({ 'n', 'x' }, '<leader>a', ':Lspsaga code_action<CR>', 'Code Action')
