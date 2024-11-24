@@ -50,18 +50,13 @@ function M.get_formatters(bufnr)
   return ret
 end
 
+---@param client vim.lsp.Client
 function M.supports_format(client)
-  if
-    client.config
-    and client.config.capabilities
-    and client.config.capabilities.documentFormattingProvider == false
-  then
-    return false
-  end
   return client.supports_method('textDocument/formatting')
     or client.supports_method('textDocument/rangeFormatting')
 end
 
+---@param formatters string[]
 function M.install_formatters(formatters)
   local registry = require('mason-registry')
   local installed = registry.get_installed_package_names()

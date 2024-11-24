@@ -112,6 +112,7 @@ autocmd('LspAttach', {
     lsp_key('n', '[d', vim.diagnostic.goto_prev, 'Goto previous diagnostic')
     lsp_key('n', ']d', vim.diagnostic.goto_next, 'Goto next diagnostic')
     lsp_key({ 'n', 'x' }, '<leader>a', ':Lspsaga code_action<CR>', 'Code Action')
+    lsp_key({ 'i' }, '<C-k>', vim.lsp.buf.signature_help, 'Show signature help')
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     -- Toggle inlay hints
