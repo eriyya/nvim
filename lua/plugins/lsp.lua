@@ -6,7 +6,9 @@ return {
   -- LSP
   { 'neovim/nvim-lspconfig' },
   -- Additional LSP support
-  { 'nvimtools/none-ls.nvim' },
+  { 'nvimtools/none-ls.nvim', dependencies = {
+    'nvimtools/none-ls-extras.nvim',
+  } },
   -- Virtual Types / Inlay hints (only used for some languages that don't natively support inlay hints yet)
   { 'jubnzv/virtual-types.nvim' },
   -- Completion engine
@@ -53,7 +55,7 @@ return {
   -- Commenting
   {
     'numToStr/Comment.nvim',
-    opts = {}
+    opts = {},
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',

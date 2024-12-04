@@ -21,6 +21,9 @@ key('i', 'jk', '<Esc>', 'Leave insert mode')
 
 key('n', 'H', '^', 'Goto start of line')
 key('n', 'L', '$', 'Goto end of line')
+key('o', 'H', '^', 'Goto start of line')
+key('o', 'L', '$', 'Goto end of line')
+
 key('n', '<C-h>', ':nohlsearch<CR>', 'Remove highlight')
 key('n', '<leader>y', '"+y', 'Yank to system clipboard')
 key('n', '<leader>w', ':w<CR>', 'Save file')
