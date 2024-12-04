@@ -4,7 +4,6 @@ local servers = {
   'lua_ls',
   'rust_analyzer',
   'ts_ls',
-  'eslint',
   'clangd',
   'gopls',
   'omnisharp_mono',
@@ -37,6 +36,8 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettierd,
+    require('none-ls.formatting.eslint_d'),
+    require('none-ls.diagnostics.eslint'),
   },
 })
 

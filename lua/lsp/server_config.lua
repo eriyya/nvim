@@ -35,7 +35,7 @@ M.server_config = {
       'postcss.config.ts'
     ),
   },
-  tsserver = {
+  ts_ls = {
     single_file_support = true,
   },
   -- ocamllsp = {
