@@ -47,6 +47,20 @@ end
 
 vim.api.nvim_create_user_command('InstallFormatters', cmd_install_formatters, {})
 
+local function get_git_user()
+  require('plenary.job')
+    :new({
+      command = 'git',
+      args = { 'config', '--global', 'user.email' },
+      on_stdout = function(_, data)
+        print(data)
+      end,
+    })
+    :start()
+end
+
+vim.api.nvim_create_user_command('Me', get_git_user, {})
+
 -- local pickers = require('telescope.pickers')
 -- local sorters = require('telescope.sorters')
 -- local finders = require('telescope.finders')
