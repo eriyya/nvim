@@ -22,10 +22,10 @@ function setup_copilot()
 end
 
 return {
-  -- {
-  --   'supermaven-inc/supermaven-nvim',
-  --   config = setup_supermaven,
-  -- },
+  {
+    'supermaven-inc/supermaven-nvim',
+    config = setup_supermaven,
+  },
   -- {
   --   'zbirenbaum/copilot.lua',
   --   cmd = 'Copilot',
