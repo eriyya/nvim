@@ -1,7 +1,7 @@
 local M = {}
 
 local DEFAULT_SETTINGS = {
-  theme = 'nightfox',
+  theme = 'catppuccin-mocha',
   excluded_lsp = {},
   code_llm = false,
 }
