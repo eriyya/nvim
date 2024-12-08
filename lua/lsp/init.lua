@@ -193,6 +193,26 @@ vim.diagnostic.config({
   },
 })
 
+-- Format on save
+local formatting = require('lsp.formatting')
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then
+      return
+    end
+
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = args.buf,
+        callback = function()
+          formatting.format(args.buf)
+        end,
+      })
+    end
+  end,
+})
+
 -- LSP Saga
 require('lspsaga').setup({
   lightbulb = {
