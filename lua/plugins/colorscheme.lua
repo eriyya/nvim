@@ -3,9 +3,35 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    opts = {
-      no_italic = true,
-    },
+    config = function()
+      require('catppuccin').setup({
+        no_italic = true,
+        integrations = {
+          telescope = {
+            enabled = true,
+          },
+          neotree = true,
+          cmp = true,
+          gitsigns = true,
+          treesitter = true,
+          treesitter_context = true,
+          snacks = true,
+        },
+        transparent_background = false,
+        color_overrides = {
+          mocha = {
+            base = '#08080d',
+            mantle = '#08080d',
+            crust = '#08080d',
+          },
+        },
+        custom_highlights = function()
+          return {
+            CursorLine = { bg = '#11111b' },
+          }
+        end,
+      })
+    end,
   },
   {
     'rose-pine/neovim',
