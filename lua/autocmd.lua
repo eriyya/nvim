@@ -26,10 +26,14 @@ autocmd('InsertLeave', {
 autocmd('BufEnter', {
   group = 'General',
   desc = 'Disable New Line Comment',
-  callback = function()
+  callback = function(args)
     vim.opt.formatoptions:remove('c')
     vim.opt.formatoptions:remove('r')
     vim.opt.formatoptions:remove('o')
+    -- Always use unix fileformat
+    if vim.bo[args.buf].modifiable then
+      vim.bo[args.buf].fileformat = 'unix'
+    end
   end,
 })
 

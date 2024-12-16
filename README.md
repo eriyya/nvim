@@ -10,20 +10,21 @@ _Example `settings.json` file_
 {
   "excluded_lsp": [],
   "theme": "catppuccin-mocha",
-  "code_llm": false,
+  "code_llm": false
 }
 ```
 
 ## Requirements
 
-Neovim 0.10.x  
+Neovim 0.10.x
 
 Install requirements with Chocolatey:  
-```choco install -y git ripgrep wget fd unzip gzip mingw make```
+`choco install -y git ripgrep wget fd unzip gzip mingw make`
 
 ### Commands
+
 - `:Themes` - Shows a list of available colorschemes, sets new colorscheme on selection
-- `:InstallFormatters` - Installs a list of pre-configured formatters (`lsp/server_config.lua`:`M.formatters`) 
+- `:InstallServers` - Installs servers using Mason from a configured list
 
 ## Terminal stuff
 
@@ -31,7 +32,8 @@ Currently using [Wezterm](https://github.com/wez/wezterm)
 
 ### Fonts
 
-[Iosevka](https://typeof.net/Iosevka/)  
+[Iosevka](https://typeof.net/Iosevka/)
+
 <details>
 <summary>My Iosevka Config</summary>
 ```toml
@@ -103,6 +105,8 @@ css = "semi-condensed"
 shape = 548
 menu = 6
 css = "semi-expanded"
+
 ```
 </details>
 
+```

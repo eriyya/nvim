@@ -17,12 +17,12 @@ vim.opt.numberwidth = 2
 vim.opt.mouse = 'a'
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
+---@diagnostic disable-next-line: missing-fields
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
 vim.opt.showmode = false -- hide mode since it's shown in the statusbar
-
 
 vim.opt.signcolumn = 'yes'
 vim.opt.splitbelow = true
@@ -31,6 +31,7 @@ vim.opt.undofile = true
 
 vim.o.signcolumn = 'yes'
 vim.opt.list = true
+---@diagnostic disable-next-line: missing-fields
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.scrolloff = 10
 
@@ -49,4 +50,3 @@ vim.g.markdown_fenced_languages = {
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-

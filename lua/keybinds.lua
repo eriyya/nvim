@@ -48,7 +48,9 @@ end, 'Fuzzy find in current buffer')
 
 -- Live Grep
 key('n', '<leader>rg', function()
-  telescope.live_grep({ prompt_title = 'Live Grep' })
+  telescope.live_grep({
+    prompt_title = 'Live Grep',
+  })
 end, 'Live Grep')
 
 -- Treesitter Context
@@ -66,6 +68,12 @@ key('v', '<leader>y', '"+y', 'Yank selection to system clipboard (VISUAL MODE)')
 key('v', '<A-j>', ":move '>+1<CR>gv=gv", 'Move selection down')
 key('v', '<A-k>', ":move '<-2<CR>gv=gv", 'Move selection up')
 key('v', '<C-k>', '<Esc>', 'Leave visual mode')
+
+--------------------------
+------- Term Mode --------
+--------------------------
+
+key('t', '<Esc>', [[<C-\><C-n>]], 'Exit terminal insert mode')
 
 --------------------------
 -------- Harpoon ---------

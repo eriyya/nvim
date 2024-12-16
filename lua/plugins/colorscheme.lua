@@ -17,7 +17,7 @@ return {
           treesitter_context = true,
           snacks = true,
         },
-        transparent_background = false,
+        transparent_background = true,
         color_overrides = {
           mocha = {
             base = '#08080d',

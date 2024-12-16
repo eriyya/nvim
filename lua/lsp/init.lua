@@ -1,19 +1,6 @@
 require('mason').setup()
-
-local servers = {
-  'lua_ls',
-  'rust_analyzer',
-  'ts_ls',
-  'clangd',
-  'gopls',
-  'omnisharp_mono',
-  'taplo',
-  'jsonls',
-  'cssls',
-  'emmet_language_server',
-  'powershell_es',
-  'zls',
-}
+local install = require('lsp.install')
+local servers = install.language_servers
 
 local util = require('util')
 local server_config = require('lsp.server_config').server_config
@@ -37,25 +24,19 @@ null_ls.setup({
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettierd,
     require('none-ls.formatting.eslint_d'),
-    require('none-ls.diagnostics.eslint'),
+    require('none-ls.diagnostics.eslint_d'),
   },
 })
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
-lspkind.init({
-  symbol_map = {
-    Supermaven = '',
-  },
-})
-
 -- List of sources to exclude from special formatting
 local exclude_fmt = {
   rust_analyzer = true,
 }
 
-require('lsp.codelens')
+-- require('lsp.codelens')
 
 cmp.setup({
   snippet = {
@@ -191,26 +172,6 @@ vim.diagnostic.config({
   float = {
     source = true,
   },
-})
-
--- Format on save
-local formatting = require('lsp.formatting')
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client then
-      return
-    end
-
-    if client.supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        buffer = args.buf,
-        callback = function()
-          formatting.format()
-        end,
-      })
-    end
-  end,
 })
 
 -- LSP Saga

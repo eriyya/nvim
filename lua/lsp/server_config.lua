@@ -36,19 +36,15 @@ M.server_config = {
     ),
   },
   ts_ls = {
-    single_file_support = true,
+    settings = {
+      single_file_support = true,
+      diagnostics = {
+        ignoredCodes = {
+          80001,
+        },
+      },
+    },
   },
-  -- ocamllsp = {
-  --   get_language_id = function(_, ftype)
-  --     return ftype
-  --   end,
-  --   on_attach = require('virtualtypes').on_attach,
-  --   settings = {
-  --     codelens = {
-  --       enable = true,
-  --     },
-  --   },
-  -- },
   lua_ls = {
     settings = {
       Lua = {
@@ -83,13 +79,6 @@ M.server_config = {
     },
   },
 }
-
-M.formatters = {
-  'stylua',
-  'prettierd',
-}
-
--- Server specific options
 
 -- don't show parse errors in a separate window
 vim.g.zig_fmt_parse_errors = 0
