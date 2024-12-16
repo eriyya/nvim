@@ -35,6 +35,7 @@ return {
         'yaml',
         'markdown',
         'markdown_inline',
+        'jsdoc',
       },
     },
     dependencies = {
