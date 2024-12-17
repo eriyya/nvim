@@ -47,6 +47,10 @@ vim.g.markdown_fenced_languages = {
   'lua',
 }
 
+if require('util').IS_WINDOWS then
+  vim.opt.shell = 'pwsh'
+end
+
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)

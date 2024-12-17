@@ -73,6 +73,7 @@ key('v', '<C-k>', '<Esc>', 'Leave visual mode')
 ------- Term Mode --------
 --------------------------
 
+key({ 'n', 't' }, '<leader>;', require('term').term_toggle, 'Toggle terminal split')
 key('t', '<Esc>', [[<C-\><C-n>]], 'Exit terminal insert mode')
 
 --------------------------
