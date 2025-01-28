@@ -1,4 +1,5 @@
 require('mason').setup()
+
 local install = require('lsp.install')
 local servers = install.language_servers
 
@@ -23,127 +24,14 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettierd,
-    require('none-ls.formatting.eslint_d'),
-    require('none-ls.diagnostics.eslint_d'),
   },
 })
-
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-
--- List of sources to exclude from special formatting
-local exclude_fmt = {
-  rust_analyzer = true,
-}
-
--- require('lsp.codelens')
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  completion = { completeopt = 'menu,menuone,noinsert' },
-  ---@diagnostic disable-next-line: missing-fields
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol',
-      maxwidth = 50,
-      ellipsis_char = '...',
-      before = function(entry, vim_item) -- Customize completion result items
-        pcall(function()
-          local item = entry:get_completion_item()
-          if exclude_fmt[entry.source.source.client.name] == nil and item.detail then
-            vim_item.menu = item.detail
-          end
-        end)
-        return vim_item
-      end,
-    }),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
-    -- C-b (back) C-f (forward) for snippet placeholder navigation.
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-    ['<C-j>'] = function()
-      if cmp.visible() then
-        cmp.abort()
-      else
-        cmp.complete()
-      end
-    end,
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'lazydev', group_index = 0 },
-    { name = 'copilot', group_index = 2 },
-    { name = 'nvim_lsp', group_index = 2 },
-    { name = 'path', group_index = 2 },
-    { name = 'luasnip', group_index = 2 },
-    {
-      name = 'spell',
-      option = {
-        keep_all_entries = false,
-        enable_in_context = function()
-          return true
-        end,
-      },
-    },
-  },
-})
-
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' },
-  },
-})
-
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' },
---   }, {
---     { name = 'cmdline' },
---   }),
---   ---@diagnostic disable-next-line: missing-fields
---   matching = { disallow_symbol_nonprefix_matching = false },
--- })
-
--- Setup language servers
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  },
-}
 
 local lspconfig = require('lspconfig')
 
 for _, lsp in ipairs(servers) do
-  local conf = { capabilities = capabilities }
-  local lsp_conf = vim.tbl_deep_extend('keep', conf, server_config[lsp] or {})
-  lspconfig[lsp].setup(lsp_conf)
+  local conf = server_config[lsp] or {}
+  lspconfig[lsp].setup(conf)
 end
 
 local signs = { Info = '', Warn = '', Error = '', Hint = '' }

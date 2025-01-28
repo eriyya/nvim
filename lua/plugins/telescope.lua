@@ -5,7 +5,6 @@ return {
     tag = '0.1.3',
     priority = 100,
     dependencies = {
-      'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',

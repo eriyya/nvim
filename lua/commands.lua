@@ -18,6 +18,12 @@ end
 
 vim.api.nvim_create_user_command('Fit', cmd_fit_content, {})
 
+vim.api.nvim_create_user_command(
+  'NeorgWorkspace',
+  require('neorg-utils').neorg_telescope_workspaces,
+  {}
+)
+
 -- Change theme command
 vim.api.nvim_create_user_command('Themes', function()
   local actions = require('telescope.actions')
@@ -33,7 +39,7 @@ vim.api.nvim_create_user_command('Themes', function()
         actions.close(prompt_bufnr)
         vim.cmd('colorscheme ' .. selection.value)
         vim.settings.theme = selection.value
-        require('settings').save()
+        vim.settings.save()
       end)
       return true
     end,

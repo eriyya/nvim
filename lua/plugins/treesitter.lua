@@ -11,6 +11,8 @@ return {
       },
       indent = { enable = false },
       ensure_installed = {
+        'norg',
+        'norg_meta', -- If errors occurr when opening an norg file try to manually uninstall and install norg and norg_meta 
         'go',
         'gomod',
         'gowork',

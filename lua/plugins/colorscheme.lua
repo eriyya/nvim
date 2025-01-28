@@ -11,7 +11,7 @@ return {
             enabled = true,
           },
           neotree = true,
-          cmp = true,
+          -- cmp = true,
           gitsigns = true,
           treesitter = true,
           treesitter_context = true,
@@ -36,7 +36,7 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    priority = 1000,
+    -- priority = 1000,
     opts = {
       variant = 'main',
       disable_italics = true,

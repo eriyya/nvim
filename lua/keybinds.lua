@@ -2,6 +2,10 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local telescope = require('telescope.builtin')
 local telescope_themes = require('telescope.themes')
+local ts_actions = require('telescope.actions')
+local ts_finders = require('telescope.finders')
+local ts_pickers = require('telescope.pickers')
+local ts_sorters = require('telescope.sorters')
 
 local key = function(mode, keys, func, desc, silent)
   silent = silent or true
@@ -19,6 +23,10 @@ key('i', 'jk', '<Esc>', 'Leave insert mode')
 ------ Normal Mode ------
 -------------------------
 
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 key('n', 'H', '^', 'Goto start of line')
 key('n', 'L', '$', 'Goto end of line')
 key('o', 'H', '^', 'Goto start of line')
@@ -32,7 +40,7 @@ key('n', '<C-b>', telescope.buffers, 'Find buffers')
 key('n', '<A-j>', ':move .+1<CR>==', 'Move current line down')
 key('n', '<A-k>', ':move .-2<CR>==', 'Move current line up')
 key('n', '<leader>tl', ':TodoTrouble<CR>', 'Show Trouble todo list')
-key('n', '<leader>ud', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
+key('n', '<leader>ut', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
 key('n', '<leader>do', ':Neogen<CR>', 'Generate context doc comment')
 key('n', '<leader>df', ':Neogen func<CR>', 'Generate function doc comment')
 key('n', '<leader>dt', ':Neogen type<CR>', 'Generate type doc comment')
@@ -57,6 +65,9 @@ end, 'Live Grep')
 key('n', '[c', function()
   require('treesitter-context').go_to_context()
 end, 'Goto current treesitter context')
+
+-- Neorg keybinds
+key('n', '<leader>no', require('neorg-utils').neorg_telescope_workspaces)
 
 --------------------------
 ------ Visual Mode -------

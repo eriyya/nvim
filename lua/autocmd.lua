@@ -51,3 +51,16 @@ autocmd('BufEnter', {
   end,
 })
 
+autocmd('BufEnter', {
+  group = 'Neorg',
+  pattern = '*.norg',
+  desc = 'Setup buffer settings for Norg files',
+  callback = function()
+    vim.keymap.set(
+      'n',
+      '<leader>t',
+      '<Plug>(neorg.qol.todo-items.todo.task-cycle)',
+      { buffer = true }
+    )
+  end,
+})

@@ -57,4 +57,21 @@ M.lines = function(str)
   return res
 end
 
+---@param obj table
+M.tbl_copy = function(obj, __seen)
+  if type(obj) ~= 'table' then
+    return obj
+  end
+  if __seen and __seen[obj] then
+    return __seen[obj]
+  end
+  local s = __seen or {}
+  local res = setmetatable({}, getmetatable(obj))
+  s[obj] = res
+  for k, v in pairs(obj) do
+    res[M.tbl_copy(k, s)] = M.tbl_copy(v, s)
+  end
+  return res
+end
+
 return M

@@ -10,6 +10,7 @@ M.language_servers = {
   'rust_analyzer',
   'zls',
   'clangd',
+  'eslint',
 }
 
 M.formatters = {

@@ -1,4 +1,4 @@
-vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 return {
@@ -6,7 +6,7 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
   lazy = false,
@@ -16,7 +16,7 @@ return {
   },
   opts = {
     filesystem = {
-      hijack_netrw_behavior = 'open_current',
+      -- hijack_netrw_behavior = 'open_current',
       window = {
         mappings = {
           ['<C-n>'] = 'close_window',

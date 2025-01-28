@@ -48,7 +48,7 @@ M.setup = function()
   vim.settings = settings
 end
 
-M.save = function()
+local function save()
   local json = vim.fn.json_encode(vim.settings)
   local write_ok = pcall(vim.fn.writefile, { json }, M.get_settings_path())
 
@@ -57,5 +57,13 @@ M.save = function()
     return
   end
 end
+
+M.save = save
+
+if not vim.settings then
+  vim.settings = {}
+end
+
+vim.settings.save = save
 
 return M
