@@ -1,4 +1,8 @@
 return {
+  -- Cursor like AI integration 
+  -- {
+  --   ' yetone/avante.nvim',
+  -- },
   {
     'supermaven-inc/supermaven-nvim',
     config = function()
