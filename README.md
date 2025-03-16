@@ -37,6 +37,7 @@ Currently using [Wezterm](https://github.com/wez/wezterm)
 
 <details>
 <summary>My Iosevka Config</summary>
+
 ```toml
 [buildPlans.IosevkaRvn]
 family = "Iosevka Rvn"
@@ -108,6 +109,6 @@ menu = 6
 css = "semi-expanded"
 
 ```
+
 </details>
 
-```
