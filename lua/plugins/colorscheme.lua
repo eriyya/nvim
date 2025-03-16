@@ -33,27 +33,32 @@ return {
       })
     end,
   },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    -- priority = 1000,
-    opts = {
-      variant = 'main',
-      disable_italics = true,
-      disable_background = true,
-      disable_float_background = true,
-    },
-  },
-  {
-    lazy = false,
-    priority = 1000,
-    'neanias/everforest-nvim',
-    config = function()
-      require('everforest').setup({
-        transparent_background_level = 1,
-      })
-    end,
-  },
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   -- priority = 1000,
+  --   opts = {
+  --     variant = 'main',
+  --     disable_italics = true,
+  --     disable_background = true,
+  --     disable_float_background = true,
+  --   },
+  -- },
+  -- {
+  --   lazy = false,
+  --   priority = 1000,
+  --   'neanias/everforest-nvim',
+  --   config = function()
+  --     require('everforest').setup({
+  --       background = 'hard',
+  --       transparent_background_level = 2,
+  --       on_highlights = function(hl)
+  --         hl['NeoTreeNormalNC'] = {}
+  --         hl['NeoTreeNormal'] = {}
+  --       end,
+  --     })
+  --   end,
+  -- },
   -- Toggleable transparent background
   {
     'xiyaowong/transparent.nvim',

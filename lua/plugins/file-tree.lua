@@ -14,15 +14,19 @@ return {
   keys = {
     { '<C-n>', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
-  opts = {
-    filesystem = {
-      -- hijack_netrw_behavior = 'open_current',
-      window = {
-        mappings = {
-          ['<C-n>'] = 'close_window',
-          ['o'] = 'open',
+  config = function()
+    require('neo-tree').setup({
+      filesystem = {
+        -- hijack_netrw_behavior = 'open_current',
+        window = {
+          mappings = {
+            ['<C-n>'] = 'close_window',
+            ['o'] = 'open',
+          },
         },
       },
-    },
-  },
+      use_popups_for_input = true,
+      popup_border_style = 'NC',
+    })
+  end,
 }
