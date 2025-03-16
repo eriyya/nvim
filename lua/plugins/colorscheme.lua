@@ -44,6 +44,16 @@ return {
       disable_float_background = true,
     },
   },
+  {
+    lazy = false,
+    priority = 1000,
+    'neanias/everforest-nvim',
+    config = function()
+      require('everforest').setup({
+        transparent_background_level = 1,
+      })
+    end,
+  },
   -- Toggleable transparent background
   {
     'xiyaowong/transparent.nvim',

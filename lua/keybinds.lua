@@ -73,6 +73,7 @@ key('n', '<leader>no', require('neorg-utils').neorg_telescope_workspaces)
 ------ Visual Mode -------
 --------------------------
 
+key('v', '<leader>f', '=', 'Vim format (when no LSP)')
 key('v', 'H', '^', 'Goto start of line (VISUAL MODE)')
 key('v', 'L', '$', 'Goto end of line (VISUAL MODE)')
 key('v', '<leader>y', '"+y', 'Yank selection to system clipboard (VISUAL MODE)')

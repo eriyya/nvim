@@ -10,7 +10,12 @@ M.language_servers = {
   'rust_analyzer',
   'zls',
   'clangd',
+  'cmake',
   'eslint',
+  'pylsp',
+  'pyright',
+  'powershell_es',
+  'biome',
 }
 
 M.formatters = {
