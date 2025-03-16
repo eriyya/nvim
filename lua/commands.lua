@@ -39,7 +39,7 @@ vim.api.nvim_create_user_command('Themes', function()
         actions.close(prompt_bufnr)
         vim.cmd('colorscheme ' .. selection.value)
         vim.settings.theme = selection.value
-        vim.settings.save()
+        require('settings').save()
       end)
       return true
     end,
