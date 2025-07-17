@@ -31,7 +31,8 @@ local lspconfig = require('lspconfig')
 
 for _, lsp in ipairs(servers) do
   local conf = server_config[lsp] or {}
-  lspconfig[lsp].setup(conf)
+  vim.lsp.config(lsp, conf)
+  vim.lsp.enable(lsp)
 end
 
 local signs = { Info = '', Warn = '', Error = '', Hint = '' }
