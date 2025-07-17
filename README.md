@@ -16,9 +16,11 @@ _Example `settings.json` file_
 
 ## Requirements
 
-Neovim 0.10.x
+**Neovim >=0.11.1**
 
-Install requirements with Chocolatey:  
+### Windows things
+
+Install requirements with Chocolatey or winget etc:  
 `choco install -y git ripgrep wget fd unzip gzip mingw make`
 
 ### Commands
@@ -111,4 +113,3 @@ css = "semi-expanded"
 ```
 
 </details>
-
