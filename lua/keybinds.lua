@@ -32,15 +32,33 @@ key('n', 'L', '$', 'Goto end of line')
 key('o', 'H', '^', 'Goto start of line')
 key('o', 'L', '$', 'Goto end of line')
 
+-- here is a likne
+-- here is a likne
+-- here is a likne
+
 key('n', '<C-h>', ':nohlsearch<CR>', 'Remove highlight')
 key('n', '<leader>y', '"+y', 'Yank to system clipboard')
 key('n', '<leader>w', ':w<CR>', 'Save file')
 key('n', '<C-p>', telescope.find_files, 'Find files')
 key('n', '<C-b>', telescope.buffers, 'Find buffers')
-key('n', '<A-j>', ':move .+1<CR>==', 'Move current line down')
-key('n', '<A-k>', ':move .-2<CR>==', 'Move current line up')
+-- key('n', '<A-j>', ':move .+1<CR>==', 'Move current line down')
+-- key('n', '<A-k>', ':move .-2<CR>==', 'Move current line up')
+
+-- Move lines (from LazyVim)
+key('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", 'Move Down')
+key('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", 'Move Up')
+key('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Down')
+key('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Up')
+key('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", 'Move Down')
+key('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", 'Move Up')
+
 key('n', '<leader>tl', ':TodoTrouble<CR>', 'Show Trouble todo list')
-key('n', '<leader>tt', ':Trouble diagnostics toggle win.relative=win<CR>', 'Show Trouble diagnostic list')
+key(
+  'n',
+  '<leader>tt',
+  ':Trouble diagnostics toggle win.relative=win<CR>',
+  'Show Trouble diagnostic list'
+)
 key('n', '<leader>ut', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
 key('n', '<leader>do', ':Neogen<CR>', 'Generate context doc comment')
 key('n', '<leader>df', ':Neogen func<CR>', 'Generate function doc comment')
