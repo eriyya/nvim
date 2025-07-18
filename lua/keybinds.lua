@@ -2,10 +2,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local telescope = require('telescope.builtin')
 local telescope_themes = require('telescope.themes')
-local ts_actions = require('telescope.actions')
-local ts_finders = require('telescope.finders')
-local ts_pickers = require('telescope.pickers')
-local ts_sorters = require('telescope.sorters')
 
 local key = function(mode, keys, func, desc, silent)
   silent = silent or true
@@ -57,6 +53,15 @@ key('n', '<leader>ut', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
 key('n', '<leader>do', ':Neogen<CR>', 'Generate context doc comment')
 key('n', '<leader>df', ':Neogen func<CR>', 'Generate function doc comment')
 key('n', '<leader>dt', ':Neogen type<CR>', 'Generate type doc comment')
+
+-- Open empty spacing scratch window to the left
+key('n', '<leader>le', function()
+  vim.cmd('leftabove vsplit')
+  vim.cmd('enew')
+  vim.cmd('setlocal buftype=nofile bufhidden=hide noswapfile')
+  vim.cmd('setlocal nonumber norelativenumber')
+  vim.cmd('vertical resize 40')
+end, 'Open spacing window')
 
 -- NeoTree open <C-n> (in file-tree.lua)
 
@@ -151,14 +156,19 @@ autocmd('LspAttach', {
     lsp_key('n', '<leader>f', format, 'Format Document')
     lsp_key('n', 'K', vim.lsp.buf.hover, 'Show hover docs')
     lsp_key('n', '<leader>rn', ':Lspsaga rename<CR>', 'Rename')
-    lsp_key('n', '[d', vim.diagnostic.goto_prev, 'Goto previous diagnostic')
-    lsp_key('n', ']d', vim.diagnostic.goto_next, 'Goto next diagnostic')
     lsp_key({ 'n', 'x' }, '<leader>a', ':Lspsaga code_action<CR>', 'Code Action')
     lsp_key({ 'i' }, '<C-k>', vim.lsp.buf.signature_help, 'Show signature help')
 
+    lsp_key('n', '[d', function()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end, 'Goto prev diagnostic')
+    lsp_key('n', ']d', function()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end, 'Goto next diagnostic')
+
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     -- Toggle inlay hints
-    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
       lsp_key('n', '<leader>th', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
       end, 'Toggle Inlay Hints')

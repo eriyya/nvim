@@ -27,8 +27,6 @@ null_ls.setup({
   },
 })
 
-local lspconfig = require('lspconfig')
-
 for _, lsp in ipairs(servers) do
   local conf = server_config[lsp] or {}
   vim.lsp.config(lsp, conf)
