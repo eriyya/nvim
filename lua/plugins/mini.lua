@@ -15,9 +15,41 @@ return {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
-
-      --  Check out: https://github.com/echasnovski/mini.nvim
+      require('mini.surround').setup({
+        -- Reverse the whitespace behaviour for brackets
+        custom_surroundings = {
+          ['('] = {
+            output = function()
+              return { left = '(', right = ')' } -- no space
+            end,
+          },
+          [')'] = {
+            output = function()
+              return { left = '( ', right = ' )' } -- with space
+            end,
+          },
+          ['{'] = {
+            output = function()
+              return { left = '{', right = '}' } -- no space
+            end,
+          },
+          ['}'] = {
+            output = function()
+              return { left = '{ ', right = ' }' } -- with space
+            end,
+          },
+          ['['] = {
+            output = function()
+              return { left = '[', right = ']' } -- no space
+            end,
+          },
+          [']'] = {
+            output = function()
+              return { left = '[ ', right = ' ]' } -- with space
+            end,
+          },
+        },
+      })
     end,
   },
 }
