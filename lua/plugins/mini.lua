@@ -2,6 +2,15 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      -- Trailspace
+      require('mini.trailspace').setup()
+
+      -- Statusline
+      require('mini.statusline').setup()
+
+      -- Tabline
+      require('mini.tabline').setup()
+
       -- Better Around/Inside textobjects
       --
       -- Examples:
