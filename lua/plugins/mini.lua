@@ -2,6 +2,9 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      -- Starter
+      require('mini.starter').setup()
+
       -- Trailspace
       require('mini.trailspace').setup()
 
