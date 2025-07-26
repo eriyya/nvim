@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local telescope = require('telescope.builtin')
 local telescope_themes = require('telescope.themes')
+local util = require('util')
 
 local key = function(mode, keys, func, desc, silent)
   silent = silent or true
@@ -14,6 +15,8 @@ end
 
 key('i', 'kj', '<Esc>', 'Leave insert mode')
 key('i', 'jk', '<Esc>', 'Leave insert mode')
+
+key('i', '<C-l>', util.accept_ai_suggestion, 'Accept AI suggestions')
 
 -------------------------
 ------ Normal Mode ------
