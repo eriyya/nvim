@@ -11,9 +11,6 @@ return {
       -- Statusline
       require('mini.statusline').setup()
 
-      -- Tabline
-      require('mini.tabline').setup()
-
       -- Better Around/Inside textobjects
       --
       -- Examples:

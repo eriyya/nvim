@@ -82,7 +82,7 @@ M.accept_ai_suggestion = function(fallback)
     luasnip.expand()
   elseif suggestion.has_suggestion() then
     suggestion.on_accept_suggestion()
-  else
+  elseif fallback then
     fallback()
   end
 end
