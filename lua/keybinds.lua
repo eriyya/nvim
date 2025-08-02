@@ -57,16 +57,8 @@ key('n', '<leader>do', ':Neogen<CR>', 'Generate context doc comment')
 key('n', '<leader>df', ':Neogen func<CR>', 'Generate function doc comment')
 key('n', '<leader>dt', ':Neogen type<CR>', 'Generate type doc comment')
 
--- Open empty spacing scratch window to the left
-key('n', '<leader>le', function()
-  vim.cmd('leftabove vsplit')
-  vim.cmd('enew')
-  vim.cmd('setlocal buftype=nofile bufhidden=hide noswapfile')
-  vim.cmd('setlocal nonumber norelativenumber')
-  vim.cmd('vertical resize 40')
-end, 'Open spacing window')
-
--- NeoTree open <C-n> (in file-tree.lua)
+-- NvimTree open
+key('n', '<C-n>', ':NvimTreeToggle<CR>', 'Toggle NvimTree')
 
 -- Fuzzy find files
 key('n', '<leader>/', function()

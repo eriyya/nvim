@@ -9,7 +9,7 @@ return {
   end,
   opts = {
     sidebar_filetypes = {
-      ['neo-tree'] = { event = 'BufWipeout' },
+      NvimTree = true,
       undotree = {
         text = 'undotree',
       },
