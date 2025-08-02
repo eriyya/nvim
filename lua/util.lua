@@ -78,9 +78,10 @@ M.accept_ai_suggestion = function(fallback)
   local luasnip = require('luasnip')
   local suggestion = require('supermaven-nvim.completion_preview')
 
-  if luasnip.expandable() then
-    luasnip.expand()
-  elseif suggestion.has_suggestion() then
+  -- if luasnip.expandable() then
+  --   luasnip.expand()
+  -- else
+  if suggestion.has_suggestion() then
     suggestion.on_accept_suggestion()
   elseif fallback then
     fallback()

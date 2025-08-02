@@ -75,6 +75,9 @@ require('lspsaga').setup({
       tds = 'textDocument/definition',
       tdi = 'textDocument/implementation',
     },
+    keys = {
+      toggle_or_open = { '<CR>', 'o' },
+    },
   },
 })
 

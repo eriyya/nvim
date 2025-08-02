@@ -33,32 +33,30 @@ return {
       })
     end,
   },
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   -- priority = 1000,
-  --   opts = {
-  --     variant = 'main',
-  --     disable_italics = true,
-  --     disable_background = true,
-  --     disable_float_background = true,
-  --   },
-  -- },
-  -- {
-  --   lazy = false,
-  --   priority = 1000,
-  --   'neanias/everforest-nvim',
-  --   config = function()
-  --     require('everforest').setup({
-  --       background = 'hard',
-  --       transparent_background_level = 2,
-  --       on_highlights = function(hl)
-  --         hl['NeoTreeNormalNC'] = {}
-  --         hl['NeoTreeNormal'] = {}
-  --       end,
-  --     })
-  --   end,
-  -- },
+  {
+    'tiagovla/tokyodark.nvim',
+    name = 'tokyodark',
+    opts = {
+      transparent_background = true,
+      styles = {
+        comments = { italic = false }, -- style for comments
+        keywords = { italic = false }, -- style for keywords
+        identifiers = { italic = false }, -- style for identifiers
+        functions = { italic = false }, -- style for functions
+        variables = { italic = false }, -- style for variables
+      },
+    },
+    config = function(_, opts)
+      require('tokyodark').setup(opts) -- calling setup is optional
+      vim.cmd([[colorscheme tokyodark]])
+    end,
+  },
+  {
+    'thesimonho/kanagawa-paper.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   -- Toggleable transparent background
   {
     'xiyaowong/transparent.nvim',
