@@ -17,7 +17,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
--- vim.g.maplocalleader = ';'
+
+if vim.loader then
+  vim.loader.enable()
+end
 
 require('settings').setup()
 
@@ -43,4 +46,3 @@ require('options')
 require('autocmd')
 require('keybinds')
 require('commands')
-require('lsp')

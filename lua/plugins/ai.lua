@@ -1,4 +1,6 @@
 return {
+  lazy = true,
+  event = 'InsertEnter',
   'supermaven-inc/supermaven-nvim',
   config = function()
     if not vim.settings.code_llm then

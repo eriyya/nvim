@@ -1,6 +1,6 @@
 return {
   'nvim-neorg/neorg',
-  lazy = false,
+  lazy = true,
   version = '*', -- Pin Neorg to the latest stable release
   config = function()
     require('neorg').setup({
@@ -23,6 +23,20 @@ return {
           },
         },
       },
+    })
+
+    vim.api.nvim_create_autocmd('BufEnter', {
+      group = 'Neorg',
+      pattern = '*.norg',
+      desc = 'Setup buffer settings for Norg files',
+      callback = function()
+        vim.keymap.set(
+          'n',
+          '<leader>t',
+          '<Plug>(neorg.qol.todo-items.todo.task-cycle)',
+          { buffer = true }
+        )
+      end,
     })
   end,
 }

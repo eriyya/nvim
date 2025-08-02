@@ -1,13 +1,13 @@
 local M = {}
 
-local pickers = require('telescope.pickers')
-local sorters = require('telescope.sorters')
-local finders = require('telescope.finders')
-local actions = require('telescope.actions')
-local action_state = require('telescope.actions.state')
-local themes = require('telescope.themes')
-
 M.neorg_telescope_workspaces = function()
+  local pickers = require('telescope.pickers')
+  local sorters = require('telescope.sorters')
+  local finders = require('telescope.finders')
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+  local themes = require('telescope.themes')
+
   ---@diagnostic disable-next-line: undefined-field
   local workspaces = require('neorg').config.modules['core.dirman'].workspaces or {}
   pickers

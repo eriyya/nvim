@@ -53,9 +53,9 @@ key(
   'Show Trouble diagnostic list'
 )
 key('n', '<leader>ut', vim.cmd.UndotreeToggle, 'Toggle UndoTree')
-key('n', '<leader>do', ':Neogen<CR>', 'Generate context doc comment')
-key('n', '<leader>df', ':Neogen func<CR>', 'Generate function doc comment')
-key('n', '<leader>dt', ':Neogen type<CR>', 'Generate type doc comment')
+key('n', '<leader>do', '<cmd>Neogen<CR>', 'Generate context doc comment')
+key('n', '<leader>df', '<cmd>Neogen func<CR>', 'Generate function doc comment')
+key('n', '<leader>dt', '<cmd>Neogen type<CR>', 'Generate type doc comment')
 
 -- NvimTree open
 key('n', '<C-n>', ':NvimTreeToggle<CR>', 'Toggle NvimTree')
