@@ -1,7 +1,5 @@
 require('mason').setup()
 
-vim.print('init LSP')
-
 local install = require('lsp.install')
 local servers = install.language_servers
 
