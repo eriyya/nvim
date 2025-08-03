@@ -82,6 +82,14 @@ return {
         },
         opts_extend = { 'sources.default' },
       },
+      -------------
+      -- Trouble --
+      -------------
+      {
+        'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {},
+      },
     },
   },
 }
