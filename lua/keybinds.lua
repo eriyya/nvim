@@ -82,6 +82,29 @@ end, 'Goto current treesitter context')
 -- Neorg keybinds
 key('n', '<leader>no', require('neorg-utils').neorg_telescope_workspaces)
 
+-- Snacks keybinds
+
+local snacks = require('snacks')
+
+key('n', '<leader>lg', snacks.lazygit.open, '[Snacks] Open Lazygit')
+key('n', '<leader>S', snacks.scratch.select, '[Snacks] Select Scratch Buffer')
+key('n', '<leader>.', function()
+  snacks.scratch()
+end, '[Snacks] Toggle Scratch Buffer')
+key('n', '<leader>bd', function()
+  snacks.bufdelete()
+end, '[Snacks] Delete Buffer')
+key('n', '<leader>gb', snacks.git.blame_line, '[Snacks] Git Blame Line')
+key({ 'n', 't' }, '<leader>;', function()
+  snacks.terminal()
+end, '[Snacks] Toggle Terminal')
+key({ 'n', 't' }, ']]', function()
+  snacks.words.jump(vim.v.count1)
+end, '[Snacks] Next Reference')
+key({ 'n', 't' }, '[[', function()
+  snacks.words.jump(-vim.v.count1)
+end, '[Snacks] Prev Reference')
+
 --------------------------
 ------ Visual Mode -------
 --------------------------
@@ -98,8 +121,8 @@ key('v', '<C-k>', '<Esc>', 'Leave visual mode')
 ------- Term Mode --------
 --------------------------
 
-key({ 'n', 't' }, '<leader>;', require('term').term_toggle, 'Toggle terminal split')
-key('t', '<Esc>', [[<C-\><C-n>]], 'Exit terminal insert mode')
+-- key({ 'n', 't' }, '<leader>;', require('term').term_toggle, 'Toggle terminal split')
+-- key('t', '<Esc>', [[<C-\><C-n>]], 'Exit terminal insert mode')
 
 --------------------------
 -------- Harpoon ---------
