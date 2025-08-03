@@ -10,6 +10,21 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'onsails/lspkind.nvim',
       'nvimdev/lspsaga.nvim',
+      {
+        'j-hui/fidget.nvim',
+        opts = {
+          progress = {
+            display = {
+              render_limit = 3,
+            },
+          },
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
       -------------
       -- none-ls --
       -------------
