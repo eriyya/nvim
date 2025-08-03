@@ -26,7 +26,7 @@ autocmd('InsertLeave', {
 autocmd('BufEnter', {
   group = 'General',
   desc = 'Disable New Line Comment',
-  callback = function(args)
+  callback = function()
     vim.opt.formatoptions:remove('c')
     vim.opt.formatoptions:remove('r')
     vim.opt.formatoptions:remove('o')
@@ -46,5 +46,3 @@ autocmd('BufEnter', {
     end
   end,
 })
-
-

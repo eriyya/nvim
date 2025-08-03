@@ -11,6 +11,16 @@ return {
       -- Statusline
       require('mini.statusline').setup()
 
+      -- Comments
+      require('mini.comment').setup({
+        mappings = {
+          comment = 'gc',
+          comment_line = 'gcc',
+          comment_visual = 'gc',
+          textobject = 'gc',
+        },
+      })
+
       -- Better Around/Inside textobjects
       --
       -- Examples:

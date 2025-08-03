@@ -2,6 +2,7 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    lazy = true,
     priority = 1000,
     config = function()
       require('catppuccin').setup({
@@ -36,6 +37,8 @@ return {
   {
     'tiagovla/tokyodark.nvim',
     name = 'tokyodark',
+    lazy = true,
+    priority = 1000,
     opts = {
       transparent_background = true,
       styles = {
@@ -53,20 +56,20 @@ return {
   },
   {
     'thesimonho/kanagawa-paper.nvim',
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {},
   },
   -- Toggleable transparent background
-  {
-    'xiyaowong/transparent.nvim',
-    opts = {
-      extra_groups = {
-        'NeoTreeNormal',
-        'NeoTreeNormalNC',
-      },
-    },
-  },
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   opts = {
+  --     extra_groups = {
+  --       'NeoTreeNormal',
+  --       'NeoTreeNormalNC',
+  --     },
+  --   },
+  -- },
   -- Additional icons
   {
     'nvim-tree/nvim-web-devicons',

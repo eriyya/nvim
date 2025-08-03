@@ -42,6 +42,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.scrolloff = 10
 
 vim.o.completeopt = 'menuone,noselect'
+vim.o.commentstring = '' -- Set to empty string for treesitter aware commenting in mini.comment
 
 vim.g.markdown_fenced_languages = {
   'html',
