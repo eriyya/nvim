@@ -10,6 +10,7 @@ M.language_servers = {
   'rust_analyzer',
   'zls',
   'clangd',
+  'mesonlsp',
   'cmake',
   'eslint',
   'pylsp',

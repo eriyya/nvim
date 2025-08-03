@@ -38,7 +38,7 @@ local ts_parsers = require('nvim-treesitter.parsers')
 -- Make sure treesitter is enabled
 autocmd('BufEnter', {
   group = 'General',
-  pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.zig,*.cpp,*.cs,*.lua',
+  pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua,*.zig',
   desc = 'Enable Treesitter',
   callback = function()
     if ts_parsers.get_parser(0) == nil then
