@@ -1,7 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local telescope = require('telescope.builtin')
-local telescope_themes = require('telescope.themes')
 local util = require('util')
 
 local key = function(mode, keys, func, desc, silent)
@@ -34,8 +32,8 @@ key('o', 'L', '$', 'Goto end of line')
 key('n', '<C-h>', ':nohlsearch<CR>', 'Remove highlight')
 key('n', '<leader>y', '"+y', 'Yank to system clipboard')
 key('n', '<leader>w', ':w<CR>', 'Save file')
-key('n', '<C-p>', telescope.find_files, 'Find files')
-key('n', '<C-b>', telescope.buffers, 'Find buffers')
+key('n', '<C-p>', '<cmd>Telescope find_files<CR>', 'Find files')
+key('n', '<C-b>', '<cmd>Telescope buffers<CR>', 'Find buffers')
 
 -- Move lines (from LazyVim)
 key('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", 'Move Down')
@@ -62,6 +60,8 @@ key('n', '<C-n>', ':NvimTreeToggle<CR>', 'Toggle NvimTree')
 
 -- Fuzzy find files
 key('n', '<leader>/', function()
+  local telescope = require('telescope.builtin')
+  local telescope_themes = require('telescope.themes')
   telescope.current_buffer_fuzzy_find(telescope_themes.get_dropdown({
     previewer = false,
   }))
@@ -69,6 +69,7 @@ end, 'Fuzzy find in current buffer')
 
 -- Live Grep
 key('n', '<leader>rg', function()
+  local telescope = require('telescope.builtin')
   telescope.live_grep({
     prompt_title = 'Live Grep',
   })
@@ -165,12 +166,17 @@ autocmd('LspAttach', {
       vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = '[LSP]: ' .. desc })
     end
 
-    lsp_key('n', 'gd', telescope.lsp_definitions, 'Goto Definitions')
+    lsp_key('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', 'Goto Definitions')
     lsp_key('n', 'gr', ':Lspsaga finder ref<CR>', 'Find references')
-    lsp_key('n', 'gI', telescope.lsp_implementations, 'Goto Implementations')
-    lsp_key('n', '<leader>D', telescope.lsp_type_definitions, 'Goto Type Definitions')
-    lsp_key('n', '<C-s>', telescope.lsp_document_symbols, 'Document Symbols')
-    lsp_key('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+    lsp_key('n', 'gI', '<cmd>Telescope lsp_implementations<CR>', 'Goto Implementations')
+    lsp_key('n', '<leader>D', '<cmd>Telescope lsp_type_definitions<CR>', 'Goto Type Definitions')
+    lsp_key('n', '<C-s>', '<cmr>Telescope lsp_document_symbols<CR>', 'Document Symbols')
+    lsp_key(
+      'n',
+      '<leader>ws',
+      '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>',
+      'Workspace Symbols'
+    )
     lsp_key('n', '<leader>f', format, 'Format Document')
     lsp_key('n', 'K', vim.lsp.buf.hover, 'Show hover docs')
     lsp_key('n', '<leader>rn', ':Lspsaga rename<CR>', 'Rename')

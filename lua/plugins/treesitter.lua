@@ -3,7 +3,12 @@ return {
     'nvim-treesitter/nvim-treesitter',
     version = false,
     build = ':TSUpdate',
-    cmd = { 'TSUpdateSync' },
+    cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
+    event = { 'BufReadPost', 'BufNewFile' },
+    init = function(plugin)
+      require('lazy.core.loader').add_to_rtp(plugin)
+      require('nvim-treesitter.query_predicates')
+    end,
     opts = {
       highlight = {
         enable = true,

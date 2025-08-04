@@ -33,16 +33,15 @@ autocmd('BufEnter', {
   end,
 })
 
-local ts_parsers = require('nvim-treesitter.parsers')
-
+-- local ts_parsers = require('nvim-treesitter.parsers')
 -- Make sure treesitter is enabled
-autocmd('BufEnter', {
-  group = 'General',
-  pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua,*.zig',
-  desc = 'Enable Treesitter',
-  callback = function()
-    if ts_parsers.get_parser(0) == nil then
-      vim.cmd('TSUpdateSync')
-    end
-  end,
-})
+-- autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
+--   group = 'General',
+--   pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua,*.zig',
+--   desc = 'Enable Treesitter',
+--   callback = function()
+--     if ts_parsers.get_parser(0) == nil then
+--       vim.cmd('TSUpdateSync')
+--     end
+--   end,
+-- })

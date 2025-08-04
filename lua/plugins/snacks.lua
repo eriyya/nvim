@@ -5,15 +5,15 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    git = { enabled = true },
+    quickfile = { enabled = true },
     bigfile = { enabled = true },
+    git = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
     indent = { enabled = false },
-    input = { enabled = true, position = 'float' },
+    input = { enabled = true },
     picker = { enabled = false },
     notifier = { enabled = true, timeout = 2000 },
-    quickfile = { enabled = true },
     scope = { enabled = false },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
