@@ -1,19 +1,19 @@
 return {
-  {
-    'echasnovski/mini.starter',
-    config = function()
-      require('mini.starter').setup()
-    end,
-  },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     event = 'VeryLazy',
+    init = function()
+      require('mini.starter').setup()
+    end,
     config = function()
       -- Trailspace
       require('mini.trailspace').setup()
 
       -- Statusline
-      require('mini.statusline').setup()
+      require('mini.statusline').setup({
+        use_icons = true,
+        content = {},
+      })
 
       -- Comments
       require('mini.comment').setup({

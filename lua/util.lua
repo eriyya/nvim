@@ -75,17 +75,25 @@ M.tbl_copy = function(obj, __seen)
 end
 
 M.accept_ai_suggestion = function(fallback)
-  local luasnip = require('luasnip')
   local suggestion = require('supermaven-nvim.completion_preview')
-
-  -- if luasnip.expandable() then
-  --   luasnip.expand()
-  -- else
   if suggestion.has_suggestion() then
     suggestion.on_accept_suggestion()
   elseif fallback then
     fallback()
   end
+end
+
+M.tbl_exclude = function(tbl, tbl_exclude)
+  local exclude_set = {}
+  for _, v in ipairs(tbl_exclude) do
+    exclude_set[v] = true
+  end
+
+  local filtered_tbl = vim.tbl_filter(function(item)
+    return not exclude_set[item]
+  end, tbl)
+
+  return filtered_tbl
 end
 
 return M

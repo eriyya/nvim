@@ -46,6 +46,10 @@ vim.api.nvim_create_user_command('Themes', function()
   })
 end, {})
 
+vim.api.nvim_create_user_command('NeorgMarkdown', function()
+  require('neorg-utils').neorg_markdown_preview('.md', true)
+end, {})
+
 vim.api.nvim_create_user_command('InstallServers', function()
   local lsp_install = require('lsp.install')
   lsp_install.mason_install(lsp_install.linters_and_formatters)

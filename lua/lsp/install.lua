@@ -1,5 +1,6 @@
 local M = {}
 
+---@type string[]
 M.language_servers = {
   'lua_ls',
   'ts_ls',

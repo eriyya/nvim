@@ -6,16 +6,11 @@ local servers = install.language_servers
 local util = require('util')
 local server_config = require('lsp.server_config').server_config
 
-local language_servers = {}
-for _, ls in ipairs(servers) do
-  if not util.table_contains(vim.settings.excluded_lsp or {}, ls) then
-    table.insert(language_servers, ls)
-  end
-end
+local servers_to_use = util.tbl_exclude(servers, vim.settings.excluded_lsp or {})
 
 require('mason-lspconfig').setup({
-  ensure_installed = language_servers,
-  automatic_installation = { exclude = vim.settings.excluded_lsp or {} },
+  ensure_installed = servers_to_use,
+  automatic_enable = { exclude = vim.settings.excluded_lsp or {} },
 })
 
 local null_ls = require('null-ls')
@@ -27,10 +22,17 @@ null_ls.setup({
   },
 })
 
-for _, lsp in ipairs(servers) do
+local use_lspconfig = { gopls = true }
+
+for _, lsp in ipairs(servers_to_use) do
   local conf = server_config[lsp] or {}
   vim.lsp.config(lsp, conf)
-  vim.lsp.enable(lsp)
+
+  if use_lspconfig[lsp] then
+    require('lspconfig')[lsp].setup(conf)
+  else
+    vim.lsp.enable(lsp)
+  end
 end
 
 local signs = { Info = '', Warn = '', Error = '', Hint = '' }

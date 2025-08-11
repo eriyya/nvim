@@ -1,3 +1,9 @@
+if vim.fn.has('nvim-0.11.3') == 0 then
+  vim.api.nvim_echo({ { 'nvim-0.11.3 or higher is required', 'ErrorMsg' } }, true, {})
+  vim.fn.getchar()
+  vim.cmd([[quit]])
+end
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

@@ -18,6 +18,7 @@ return {
           },
         },
         ['core.qol.todo_items'] = {},
+        ['core.export'] = {},
         ['core.esupports.indent'] = {},
         ['core.concealer'] = {
           config = {
