@@ -28,6 +28,7 @@ Install requirements with Chocolatey or winget etc:
 - `:Themes` - Shows a list of available colorschemes, sets new colorscheme on selection
 - `:InstallServers` - Installs servers using Mason from a configured list
 - `:NeorgWorkspace` - Swap between Neorg workspaces via a telescope dropdown
+- `:NeorgMarkdown` - Previews a Neorg file as a markdown file using markdown-preview.nvim
 
 ## Terminal stuff
 
