@@ -35,6 +35,24 @@ return {
     end,
   },
   {
+    'rebelot/kanagawa.nvim',
+    lazy = true,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      terminalColors = true,
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = 'none',
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     'tiagovla/tokyodark.nvim',
     name = 'tokyodark',
     lazy = true,
@@ -53,12 +71,6 @@ return {
       require('tokyodark').setup(opts) -- calling setup is optional
       vim.cmd([[colorscheme tokyodark]])
     end,
-  },
-  {
-    'thesimonho/kanagawa-paper.nvim',
-    lazy = true,
-    priority = 1000,
-    opts = {},
   },
   -- Toggleable transparent background
   -- {

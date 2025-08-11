@@ -1,4 +1,4 @@
-local theme = vim.settings.theme or 'catppuccin-mocha'
+local theme = vim.settings.theme or 'tokyodark'
 
 if not pcall(vim.cmd.colorscheme, theme) then
   vim.cmd.colorscheme(theme)
