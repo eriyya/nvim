@@ -33,15 +33,12 @@ autocmd('BufEnter', {
   end,
 })
 
--- local ts_parsers = require('nvim-treesitter.parsers')
--- Make sure treesitter is enabled
--- autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
---   group = 'General',
---   pattern = '*.sh,*.go,*.js,*.jsx,*.ts,*.tsx,*.c,*.rs,*.cpp,*.cs,*.lua,*.zig',
---   desc = 'Enable Treesitter',
---   callback = function()
---     if ts_parsers.get_parser(0) == nil then
---       vim.cmd('TSUpdateSync')
---     end
---   end,
--- })
+-- wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup('wrap_spell', { clear = true }),
+  pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})

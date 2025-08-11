@@ -17,7 +17,6 @@ vim.opt.numberwidth = 2
 vim.opt.mouse = 'a'
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
----@diagnostic disable-next-line: missing-fields
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.inccommand = 'split'
 
@@ -35,14 +34,18 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
 
-vim.o.signcolumn = 'yes'
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.winminwidth = 5 -- Minimum window width
+
 vim.opt.list = true
 ---@diagnostic disable-next-line: missing-fields
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.scrolloff = 10
 
+vim.o.signcolumn = 'yes'
 vim.o.completeopt = 'menuone,noselect'
 vim.o.commentstring = '' -- Set to empty string for treesitter aware commenting in mini.comment
+vim.o.laststatus = 3
 
 vim.g.markdown_fenced_languages = {
   'html',
