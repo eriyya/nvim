@@ -16,6 +16,12 @@ M.server_config = {
       },
     },
   },
+  eslint = {
+    settings = {
+      workingDirectories = { mode = 'auto' },
+      format = false,
+    },
+  },
   tailwindcss = {
     cmd = { 'tailwindcss-language-server', '--stdio' },
     filetypes = {
