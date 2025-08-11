@@ -1,5 +1,7 @@
 require('mason').setup()
 
+-- TODO: Look into using nvim-lint with conform instead of null-ls/none-ls
+
 local install = require('lsp.install')
 local servers = install.language_servers
 
