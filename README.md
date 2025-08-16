@@ -18,6 +18,15 @@ _Example `settings.json` file_
 
 **Neovim >=0.11.1**
 
+**Tools:**
+- Ripgrep
+- fd
+- Python3
+- NodeJS
+- Yarn
+- fzf
+- gzip & unzip
+
 ### Windows things
 
 Install requirements with Chocolatey or winget etc:  
